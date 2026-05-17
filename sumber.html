@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumber Data — Dolar Naik, Gak Ngaruh?</title>
+  <meta name="description" content="Referensi dan sumber data kredibel buat tiap sektor yang terdampak kenaikan dolar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Sora:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="/" class="logo-nav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Beranda</a>
+    <span class="nav-title">Sumber Data</span>
+  </nav>
+</header>
+
+<main>
+  <section class="sumber">
+    <div class="sumber-content">
+      <span class="section-tag">#Sumber</span>
+      <h2>Referensi & Sumber Data</h2>
+      <p class="sumber-intro">Pengen dalemin? Ini sumber-sumber kredibel buat tiap sektor. Klik kategori buat filter.</p>
+      <div class="sumber-filters" id="sumberFilters"></div>
+      <div class="sumber-grid" id="sumberGrid"></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <p>Data kurs dari <a href="https://www.frankfurter.app" target="_blank" rel="noopener">Frankfurter API</a> (European Central Bank).</p>
+    <p>Dibuat untuk edukasi publik. Silakan disebarkan.</p>
+    <p class="footer-watermark">made by <a href="https://instagram.com/shafryyusuf" target="_blank" rel="noopener">@shafryyusuf</a></p>
+  </div>
+</footer>
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg: oklch(0.99 0.004 75);
+    --surface: oklch(0.97 0.006 70);
+    --surface2: oklch(0.94 0.008 65);
+    --text: oklch(0.15 0.018 60);
+    --text2: oklch(0.45 0.02 60);
+    --accent: oklch(0.52 0.22 30);
+    --accent-dim: oklch(0.65 0.15 30);
+    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-body: 'Sora', sans-serif;
+  }
+  html{scroll-behavior:smooth;background:var(--bg)}
+  body{
+    font-family:var(--font-body);color:var(--text);
+    background:var(--bg);line-height:1.6;
+  }
+
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:1rem 2rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:color-mix(in oklch, var(--bg) 80%, transparent);
+    backdrop-filter:blur(12px);
+  }
+  .logo-nav{
+    display:flex;align-items:center;gap:0.35rem;
+    text-decoration:none;color:var(--accent);font-weight:600;font-size:0.85rem;
+  }
+  .logo-nav:hover{color:var(--accent-dim)}
+  .logo-nav svg{width:1rem;height:1rem}
+  .nav-title{font-size:0.85rem;color:var(--text2)}
+
+  .sumber{padding:6rem 2rem 4rem;background:var(--bg)}
+  .sumber-content{max-width:900px;margin:0 auto}
+  .section-tag{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;color:var(--accent);font-weight:700;display:block;margin-bottom:0.5rem}
+  h2{font-family:var(--font-display);font-size:clamp(1.5rem,3vw,2rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:0.75rem}
+  .sumber-intro{font-size:clamp(0.85rem,1.2vw,1rem);color:var(--text2);margin-bottom:1.5rem}
+  .sumber-filters{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem}
+  .sumber-filter{
+    padding:0.4rem 1rem;border-radius:100px;border:1px solid var(--surface2);
+    background:var(--bg);color:var(--text2);font-size:0.75rem;font-weight:500;
+    cursor:pointer;transition:all 0.15s;font-family:var(--font-body);
+  }
+  .sumber-filter:hover{border-color:var(--accent-dim);color:var(--text)}
+  .sumber-filter.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .sumber-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.75rem}
+  .sumber-card{
+    background:var(--surface);border-radius:12px;padding:1rem 1.25rem;
+    display:flex;flex-direction:column;gap:0.35rem;
+    text-decoration:none;color:inherit;
+    transition:transform 0.15s,border-color 0.15s;
+    border:1px solid transparent;
+  }
+  .sumber-card:hover{transform:translateY(-2px);border-color:var(--accent-dim)}
+  .sumber-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:0.5rem}
+  .sumber-card-title{font-family:var(--font-display);font-weight:600;font-size:0.9rem;color:var(--text);line-height:1.3}
+  .sumber-card-url{font-size:0.65rem;color:var(--accent);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:140px;flex-shrink:0;text-align:right}
+  .sumber-card-desc{font-size:0.78rem;color:var(--text2);line-height:1.4}
+  .sumber-card-tags{display:flex;flex-wrap:wrap;gap:0.3rem;margin-top:0.15rem}
+  .sumber-tag{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.05em;padding:0.15rem 0.5rem;border-radius:4px;background:color-mix(in oklch, var(--accent) 8%, transparent);color:var(--accent-dim);font-weight:600}
+
+  footer{padding:2rem;background:var(--surface);border-top:1px solid var(--surface2)}
+  .footer-content{max-width:900px;margin:0 auto;font-size:0.8rem;color:var(--text2)}
+  .footer-content a{color:var(--accent)}
+  .footer-content p{margin-bottom:0.25rem}
+  .footer-watermark{margin-top:0.75rem!important;padding-top:0.75rem;border-top:1px solid var(--surface2);font-size:0.75rem}
+
+  @media(max-width:480px){
+    header{padding:0.6rem 1rem}
+    .sumber{padding:5rem 1rem 2.5rem}
+    .sumber-intro{font-size:0.85rem}
+    .sumber-filter{font-size:0.7rem;padding:0.35rem 0.75rem}
+    .sumber-card{padding:0.85rem 1rem}
+    .sumber-card-title{font-size:0.82rem}
+    .sumber-card-desc{font-size:0.72rem}
+    .sumber-card-url{font-size:0.6rem;max-width:100px}
+    .sumber-grid{grid-template-columns:1fr}
+    footer{padding:1.5rem 1rem}
+    .footer-content{font-size:0.7rem}
+  }
+</style>
+
+<script>
+  const SUMBER_DATA = [
+    {name:'Bank Indonesia',url:'bi.go.id',desc:'Data kurs acuan, inflasi, kebijakan moneter, dan statistik ekonomi Indonesia.',tags:['umum','makanan','bbm','kesehatan','teknologi','pertanian','properti','utang','pendidikan']},
+    {name:'Badan Pusat Statistik',url:'bps.go.id',desc:'Data inflasi, impor, ekspor, indeks harga konsumen, dan statistik sektoral.',tags:['umum','makanan','bbm','kesehatan','teknologi','pertanian','properti','utang','pendidikan']},
+    {name:'Kementerian Keuangan RI',url:'kemenkeu.go.id',desc:'APBN, utang negara, pajak, dan kebijakan fiskal Indonesia.',tags:['umum','utang','makanan','bbm','pertanian','pendidikan']},
+    {name:'Kementerian Perdagangan',url:'kemendag.go.id',desc:'Data neraca perdagangan, harga komoditas, dan kebijakan impor-ekspor.',tags:['umum','makanan','bbm','pertanian','teknologi']},
+    {name:'CNBC Indonesia',url:'cnbcindonesia.com',desc:'Berita ekonomi, pasar keuangan, dan analisis dampak makro terkini.',tags:['umum','makanan','bbm','kesehatan','teknologi','pertanian','properti','utang','pendidikan']},
+    {name:'Katadata',url:'katadata.co.id',desc:'Data ekonomi, riset industri, dan insight bisnis berbasis data.',tags:['umum','makanan','bbm','teknologi','pertanian','properti','utang']},
+    {name:'Databoks',url:'databoks.katadata.co.id',desc:'Infografis dan data statistik ekonomi & sektoral yang gampang dicerna.',tags:['umum','makanan','bbm','kesehatan','teknologi','pertanian','properti','utang','pendidikan']},
+    {name:'Bisnis Indonesia',url:'bisnis.com',desc:'Berita bisnis & ekonomi dengan liputan sektoral yang mendalam.',tags:['umum','makanan','bbm','teknologi','pertanian','properti','utang']},
+    {name:'Kontan',url:'kontan.co.id',desc:'Berita investasi, pasar modal, dan analisis ekonomi harian.',tags:['umum','makanan','bbm','properti','utang','teknologi']},
+    {name:'Kompas Money',url:'money.kompas.com',desc:'Rubrik ekonomi Kompas — liputan kebijakan, harga, dan dampak masyarakat.',tags:['umum','makanan','bbm','kesehatan','pendidikan','pertanian']},
+    {name:'Trading Economics',url:'tradingeconomics.com/indonesia',desc:'Data kurs, inflasi, PDB, dan indikator makro Indonesia real-time.',tags:['umum','makanan','bbm','kesehatan','teknologi','pertanian','properti','utang','pendidikan']},
+    {name:'World Bank Indonesia',url:'worldbank.org/en/country/indonesia',desc:'Data pembangunan, kemiskinan, dan analisis ekonomi Indonesia.',tags:['umum','makanan','kesehatan','pertanian','pendidikan','utang']},
+    {name:'IMF Indonesia',url:'imf.org/en/Countries/IDN',desc:'Laporan ekonomi, proyeksi pertumbuhan, dan stabilitas sektor keuangan.',tags:['umum','utang','makanan','bbm']},
+    {name:'Reuters Indonesia',url:'reuters.com/indonesia',desc:'Berita ekonomi & bisnis Indonesia dari kantor berita internasional.',tags:['umum','makanan','bbm','utang','teknologi']},
+    {name:'CEIC Data',url:'ceicdata.com/en/country/indonesia',desc:'Database statistik ekonomi Indonesia untuk riset mendalam.',tags:['umum','makanan','bbm','properti','utang']},
+    {name:'Gapmmi',url:'gapmmi.id',desc:'Gabungan Pengusaha Makanan & Minuman — data industri F&B nasional.',tags:['makanan']},
+    {name:'Perum Bulog',url:'bulog.co.id',desc:'Data stok pangan, harga beras, dan distribusi komoditas pokok.',tags:['makanan','pertanian']},
+    {name:'Kementerian Pertanian',url:'pertanian.go.id',desc:'Data produksi pangan, harga komoditas pertanian, dan kebijakan agraria.',tags:['makanan','pertanian']},
+    {name:'USDA FAS Indonesia',url:'fas.usda.gov',desc:'Laporan impor pangan Indonesia dari Departemen Pertanian AS.',tags:['makanan','pertanian']},
+    {name:'FAO Indonesia',url:'fao.org/indonesia',desc:'Data ketahanan pangan, produksi, dan harga pangan global.',tags:['makanan','pertanian']},
+    {name:'Kemenperin',url:'kemenperin.go.id',desc:'Data industri pengolahan, termasuk industri makanan & minuman.',tags:['makanan','teknologi','properti']},
+    {name:'Kementerian ESDM',url:'esdm.go.id',desc:'Data energi, minerba, harga minyak, dan kebijakan energi nasional.',tags:['bbm']},
+    {name:'SKK Migas',url:'skkmigas.go.id',desc:'Data produksi migas, investasi hulu, dan lifting minyak Indonesia.',tags:['bbm']},
+    {name:'Pertamina',url:'pertamina.com',desc:'Harga BBM, produksi energi, dan distribusi bahan bakar nasional.',tags:['bbm']},
+    {name:'IEA (International Energy Agency)',url:'iea.org',desc:'Data & proyeksi energi global, termasuk Indonesia.',tags:['bbm']},
+    {name:'OPEC',url:'opec.org',desc:'Data harga minyak dunia, produksi, dan kuota negara anggota.',tags:['bbm']},
+    {name:'Dewan Energi Nasional',url:'den.go.id',desc:'Kebijakan energi nasional, bauran energi, dan ketahanan energi.',tags:['bbm']},
+    {name:'Kementerian Kesehatan',url:'kemkes.go.id',desc:'Data kesehatan nasional, anggaran, dan kebijakan farmasi.',tags:['kesehatan']},
+    {name:'BPOM',url:'pom.go.id',desc:'Data izin edar obat & makanan, keamanan farmasi, dan regulasi.',tags:['kesehatan','makanan']},
+    {name:'WHO Indonesia',url:'who.int/indonesia',desc:'Data kesehatan masyarakat, imunisasi, dan sistem kesehatan Indonesia.',tags:['kesehatan']},
+    {name:'Ikatan Dokter Indonesia',url:'idi.or.id',desc:'Data tenaga medis, standar pelayanan, dan advokasi kesehatan.',tags:['kesehatan']},
+    {name:'Kemenkominfo',url:'kominfo.go.id',desc:'Data infrastruktur digital, kebijakan telekomunikasi, dan internet.',tags:['teknologi']},
+    {name:'APJII',url:'apjii.or.id',desc:'Asosiasi Penyelenggara Jasa Internet Indonesia — data penetrasi internet.',tags:['teknologi']},
+    {name:'IDC Indonesia',url:'idc.com/apac/indonesia',desc:'Riset pasar TI, belanja teknologi, dan tren digitalisasi Indonesia.',tags:['teknologi']},
+    {name:'GSMA',url:'gsma.com',desc:'Data industri seluler, adopsi mobile, dan ekonomi digital Indonesia.',tags:['teknologi']},
+    {name:'Tech in Asia ID',url:'techinasia.com/id',desc:'Berita startup dan teknologi Indonesia, pendanaan, dan tren digital.',tags:['teknologi']},
+    {name:'REI (Real Estate Indonesia)',url:'reionline.com',desc:'Data pasar properti, harga rumah, dan perkembangan sektor properti.',tags:['properti']},
+    {name:'Rumah123',url:'rumah123.com',desc:'Indeks harga properti dan tren pasar perumahan Indonesia.',tags:['properti']},
+    {name:'UrbanIndo',url:'urbanindo.com',desc:'Data listing properti, harga pasar, dan tren sewa di kota besar.',tags:['properti']},
+    {name:'BPS Konstruksi',url:'bps.go.id/subject/4/konstruksi',desc:'Data indikator konstruksi, biaya bangunan, dan tenaga kerja sektor.',tags:['properti']},
+    {name:'DJP Kemenkeu',url:'pajak.go.id',desc:'Data penerimaan negara, pajak impor, dan kebijakan fiskal sektoral.',tags:['utang']},
+    {name:'Cbonds Indonesia',url:'cbonds.com',desc:'Data obligasi pemerintah, yield SUN, dan pasar surat utang negara.',tags:['utang']},
+    {name:'Bloomberg Indonesia',url:'bloomberg.com/asia',desc:'Data pasar obligasi, kurs, dan berita keuangan Indonesia.',tags:['utang','umum']},
+    {name:'Kemendikbud',url:'kemdikbud.go.id',desc:'Data pendidikan nasional, anggaran, dan kebijakan sektor pendidikan.',tags:['pendidikan']},
+    {name:'UNESCO Indonesia',url:'unesco.org/en/countries/id',desc:'Data pendidikan, literasi, dan pembangunan SDM Indonesia.',tags:['pendidikan']},
+    {name:'LPDP',url:'lpdp.kemenkeu.go.id',desc:'Data beasiswa, biaya pendidikan LN, dan pengelolaan dana abadi pendidikan.',tags:['pendidikan']},
+    {name:'World Bank Education',url:'worldbank.org/en/topic/education/indonesia',desc:'Data anggaran pendidikan, akses sekolah, dan kualitas SDM Indonesia.',tags:['pendidikan']},
+    {name:'BPS Pendidikan',url:'bps.go.id/subject/28/pendidikan',desc:'Statistik pendidikan formal, partisipasi sekolah, dan APM/APK.',tags:['pendidikan']},
+    {name:'Kementerian PUPR',url:'pu.go.id',desc:'Data infrastruktur publik yang terkait properti dan konstruksi.',tags:['properti']},
+    {name:'Puslitbang Perkebunan',url:'perkebunan.litbang.pertanian.go.id',desc:'Data riset perkebunan, komoditas ekspor, dan hilirisasi.',tags:['pertanian']},
+    {name:'Kementerian ATR/BPN',url:'atrbpn.go.id',desc:'Data pertanahan, sertifikasi, dan nilai tanah properti.',tags:['properti']},
+  ];
+
+  function renderSumber(filter) {
+    const grid = document.getElementById('sumberGrid');
+    const filtered = filter === 'all' ? SUMBER_DATA : SUMBER_DATA.filter(s => s.tags.includes(filter));
+    grid.innerHTML = filtered.map(s => `
+      <a href="https://${s.url}" target="_blank" rel="noopener" class="sumber-card">
+        <div class="sumber-card-top">
+          <span class="sumber-card-title">${s.name}</span>
+          <span class="sumber-card-url">${s.url}</span>
+        </div>
+        <p class="sumber-card-desc">${s.desc}</p>
+        <div class="sumber-card-tags">${s.tags.filter(t=>t!=='umum').map(t => `<span class="sumber-tag">${t}</span>`).join('')}</div>
+      </a>
+    `).join('');
+  }
+
+  function setupSumberFilters() {
+    const categories = [
+      {id:'all',label:'Semua'},
+      {id:'makanan',label:'Makanan'},
+      {id:'bbm',label:'BBM & Energi'},
+      {id:'kesehatan',label:'Kesehatan'},
+      {id:'teknologi',label:'Teknologi'},
+      {id:'pertanian',label:'Pertanian'},
+      {id:'properti',label:'Properti'},
+      {id:'utang',label:'Utang Negara'},
+      {id:'pendidikan',label:'Pendidikan'},
+    ];
+    const container = document.getElementById('sumberFilters');
+    container.innerHTML = categories.map(c => `
+      <button class="sumber-filter${c.id==='all'?' active':''}" data-filter="${c.id}">${c.label}</button>
+    `).join('');
+
+    container.addEventListener('click', e => {
+      const btn = e.target.closest('.sumber-filter');
+      if (!btn) return;
+      container.querySelectorAll('.sumber-filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderSumber(btn.dataset.filter);
+    });
+  }
+
+  setupSumberFilters();
+  renderSumber('all');
+</script>
+
+</body>
+</html>
