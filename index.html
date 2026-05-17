@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dolar Naik, Gak Ngaruh? — Realita Ekonomi buat Rakyat</title>
+  <meta name="description" content="Kurs dolar naik terus. Apa bener gak ngaruh? Yuk liat dampaknya ke hidup lo sehari-hari — pake bahasa bayi, tanpa jargon.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Sora:wght@300..700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <span class="logo">USD/IDR</span>
+    <span class="live-rate" id="nav-rate">—</span>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-text">
+      <p class="hero-kicker">PRESIDEN BILANG DOLAR NAIK GAK NGARUH</p>
+      <h1>
+        <span class="line1">Dolar Naik,</span>
+        <span class="line2">Gak Ngaruh?</span>
+      </h1>
+      <div class="hero-statement">
+        <blockquote>
+          "Orang di desa gak bertransaksi pakai dolar. Jadi naiknya dolar gak ngaruh."
+          <cite>— Prabowo Subianto, Presiden RI</cite>
+        </blockquote>
+      </div>
+    </div>
+    <div class="hero-rate" id="hero-rate">
+      <div class="rate-box">
+        <span class="rate-label">USD / IDR</span>
+        <span class="rate-value" id="rate-value">—</span>
+        <span class="rate-change" id="rate-change">—</span>
+      </div>
+      <p class="rate-date" id="rate-date">—</p>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll buat liat realita</span>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M10 16l5-5M10 16l-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+  </section>
+
+  <!-- ============ REALITA ============ -->
+  <section class="realita" id="realita">
+    <div class="realita-content">
+      <span class="section-tag">#Realita</span>
+      <h2>Masalahnya, ekonomi gak sesimpel itu.</h2>
+      <div class="realita-grid">
+        <div class="realita-text">
+          <p>Bayangin lo jualan gorengan di pinggir jalan. Lo beli minyak goreng, tepung, gas — semua harga naik. Lo pikir: <em>"Kan gue jualan pakai rupiah. Dolar naik mah urusan orang kaya."</em></p>
+          <p>Masalahnya, minyak goreng lo — meskipun beli di warung Pak RT — <strong>bahan bakunya dibeli pake dolar.</strong> Kedelai impor. Gandum impor. Susu impor. Bahkan pupuk buat petani aja dibeli pake dolar.</p>
+          <p class="realita-punch">Jadi meskipun lo gak megang dolar, <strong>semua harga barang di sekitar lo</strong> ikut naik. Gak percaya?</p>
+        </div>
+        <div class="realita-analogi">
+          <span class="big-analogi">&#x1F9D1;&#x200D;&#x1F373;</span>
+          <p class="analogi-title">Analogi Sederhana</p>
+          <p>Lo punya warung. Lo jualan es teh. Tiba-tiba harga gula naik, harga es batu naik, harga gelas plastik naik. Lo bilang "gak ngaruh" karena lo jual es teh, bukan gula.</p>
+          <p><strong>Tapi lo jual es teh <em>pakai</em> gula.</strong> Begitu juga Indonesia — kita jual barang <em>pakai</em> dolar buat beli bahan baku.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIVE CHART ============ -->
+  <section class="chart-section" id="chart">
+    <div class="chart-content">
+      <span class="section-tag">#Data</span>
+      <h2>Kurs Hari Ini</h2>
+      <div class="chart-stats">
+        <div class="stat-block stat-now">
+          <span class="stat-label">Sekarang</span>
+          <span class="stat-value" id="stat-now">—</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-label">Tertinggi (1th)</span>
+          <span class="stat-value" id="stat-high">—</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-label">Terendah (1th)</span>
+          <span class="stat-value" id="stat-low">—</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-label">Perubahan (1th)</span>
+          <span class="stat-value" id="stat-change">—</span>
+        </div>
+      </div>
+      <div class="chart-wrap">
+        <canvas id="rateChart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DAMPAK ============ -->
+  <section class="dampak" id="dampak">
+    <div class="dampak-content">
+      <span class="section-tag">#Dampak</span>
+      <h2>Yang Kena Imbas</h2>
+      <p class="dampak-intro">Dolar naik gak cuman ngaruh ke kantong pejabat. Ini dampak langsung ke dompet lo:</p>
+      <div class="dampak-grid" id="dampakGrid">
+        <!-- populated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ KESIMPULAN ============ -->
+  <section class="kesimpulan" id="kesimpulan">
+    <div class="kesimpulan-content">
+      <span class="section-tag">#Kesimpulan</span>
+      <h2>Jadi, apa dolar naik ngaruh?</h2>
+      <div class="kesimpulan-box">
+        <p class="kesimpulan-big">Ya. Sangat. Ngaruh banget.</p>
+        <p>Meskipun lo gak pernah megang dolar, <strong>setiap barang yang lo beli setiap hari</strong> — dari nasi goreng di warteg, pulsa HP, bensin motor, sampe obat batuk — <strong>harganya dipengaruhi dolar.</strong></p>
+        <p>Indonesia masih impor banyak banget: gandum, kedelai, susu, gula, minyak mentah, mesin, alat elektronik, bahan baku obat, sampe pesawat. <strong>Semuanya pake dolar.</strong></p>
+        <p>Jadi kalau ada yang bilang "dolar naik gak ngaruh" — lo udah tau jawabannya sekarang.</p>
+      </div>
+      <div class="kesimpulan-share">
+        <a href="https://twitter.com/intent/tweet?text=Dolar+naik%2C+gak+ngaruh%3F+Cek+fakta+di+sini+%F0%9F%91%80&url=" target="_blank" rel="noopener" class="share-btn">Bagikan di Twitter</a>
+        <span class="share-note">Biar yang lain juga tau realitanya</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-content">
+    <p>Data kurs dari <a href="https://www.frankfurter.app" target="_blank" rel="noopener">Frankfurter API</a> (European Central Bank).</p>
+    <p>Dibuat untuk edukasi publik. Silakan disebarkan.</p>
+  </div>
+</footer>
+
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg: oklch(0.99 0.004 75);
+    --surface: oklch(0.97 0.006 70);
+    --surface2: oklch(0.94 0.008 65);
+    --text: oklch(0.15 0.018 60);
+    --text2: oklch(0.45 0.02 60);
+    --accent: oklch(0.52 0.22 30);
+    --accent-dim: oklch(0.65 0.15 30);
+    --gold: oklch(0.72 0.14 75);
+    --green: oklch(0.55 0.15 145);
+    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-body: 'Sora', sans-serif;
+  }
+  html{scroll-behavior:smooth;background:var(--bg)}
+  body{
+    font-family:var(--font-body);
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:1rem 2rem;
+    display:flex;justify-content:space-between;align-items:center;
+    background:color-mix(in oklch, var(--bg) 85%, transparent);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--surface2);
+    font-size:0.875rem;
+  }
+  .logo{font-weight:700;font-family:var(--font-display);letter-spacing:-0.02em}
+  .live-rate{font-variant-numeric:tabular-nums;color:var(--text2)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;display:flex;flex-direction:column;
+    justify-content:center;align-items:flex-start;
+    padding:6rem 2rem 3rem;position:relative;
+    max-width:1200px;margin:0 auto;width:100%;
+  }
+  .hero-kicker{
+    font-size:clamp(0.65rem,1.2vw,0.85rem);
+    text-transform:uppercase;letter-spacing:0.15em;
+    color:var(--accent);font-weight:600;margin-bottom:1rem;
+  }
+  .hero-text h1{
+    font-family:var(--font-display);
+    font-weight:800;line-height:1;
+    margin-bottom:2rem;
+  }
+  .line1{font-size:clamp(2.5rem,12vw,8rem);display:block;letter-spacing:-0.04em}
+  .line2{
+    font-size:clamp(2rem,10vw,6rem);display:block;
+    color:var(--accent);letter-spacing:-0.03em;
+  }
+  .hero-statement{margin-bottom:2rem}
+  .hero-statement blockquote{
+    font-size:clamp(0.85rem,1.4vw,1.05rem);
+    border-left:none;padding:1rem 1.5rem;
+    background:var(--surface);border-radius:12px;
+    max-width:600px;color:var(--text2);
+    font-style:italic;line-height:1.6;
+  }
+  .hero-statement cite{
+    display:block;margin-top:0.5rem;
+    font-size:0.8rem;font-style:normal;
+    color:var(--text2);opacity:0.7;
+  }
+
+  .hero-rate{margin-top:auto;width:100%}
+  .rate-box{
+    display:inline-flex;flex-direction:column;
+    background:var(--surface);border-radius:16px;
+    padding:1.25rem 2rem;
+  }
+  .rate-label{font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text2);font-weight:600}
+  .rate-value{
+    font-family:var(--font-display);
+    font-size:clamp(2rem,5vw,3.5rem);font-weight:800;
+    font-variant-numeric:tabular-nums;
+    letter-spacing:-0.03em;
+  }
+  .rate-change{
+    font-size:0.9rem;font-weight:600;
+    font-variant-numeric:tabular-nums;
+  }
+  .rate-change.up{color:var(--accent)}
+  .rate-change.down{color:var(--green)}
+  .rate-date{font-size:0.75rem;color:var(--text2);margin-top:0.5rem}
+
+  .hero-scroll{
+    position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:0.25rem;
+    color:var(--text2);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;
+    animation:float 2s ease-in-out infinite;
+  }
+  @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+
+  /* ---------- REALITA ---------- */
+  .realita{padding:4rem 2rem;background:var(--surface)}
+  .realita-content,.chart-content,.dampak-content,.kesimpulan-content{
+    max-width:900px;margin:0 auto;
+  }
+  .section-tag{
+    font-size:0.7rem;text-transform:uppercase;letter-spacing:0.15em;
+    color:var(--accent);font-weight:700;display:block;margin-bottom:0.5rem;
+  }
+  .realita h2,.chart-section h2,.dampak h2,.kesimpulan h2{
+    font-family:var(--font-display);
+    font-size:clamp(1.5rem,3.5vw,2.5rem);
+    font-weight:700;line-height:1.25;
+    margin-bottom:2rem;letter-spacing:-0.02em;
+  }
+  .realita-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:2rem;
+  }
+  @media(max-width:700px){.realita-grid{grid-template-columns:1fr}}
+  .realita-text p{margin-bottom:1rem;font-size:clamp(0.9rem,1.3vw,1.05rem);color:var(--text2)}
+  .realita-text p strong{color:var(--text)}
+  .realita-punch{
+    font-size:clamp(1rem,1.5vw,1.2rem)!important;
+    font-weight:600;color:var(--text)!important;
+    padding:1rem;background:var(--bg);border-radius:12px;
+  }
+  .realita-analogi{
+    background:var(--bg);border-radius:16px;padding:1.5rem;
+    align-self:start;
+  }
+  .big-analogi{font-size:2.5rem;display:block;margin-bottom:0.5rem}
+  .analogi-title{font-weight:700;font-size:0.9rem;margin-bottom:0.75rem;color:var(--text)}
+  .realita-analogi p{font-size:0.9rem;color:var(--text2);margin-bottom:0.75rem}
+  .realita-analogi p:last-child{margin-bottom:0}
+
+  /* ---------- CHART ---------- */
+  .chart-section{padding:4rem 2rem;background:var(--bg)}
+  .chart-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;
+    margin-bottom:2rem;
+  }
+  @media(max-width:600px){.chart-stats{grid-template-columns:repeat(2,1fr)}}
+  .stat-block{
+    background:var(--surface);border-radius:12px;padding:1rem;
+  }
+  .stat-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text2);display:block}
+  .stat-value{
+    font-family:var(--font-display);
+    font-size:clamp(1.1rem,2vw,1.5rem);font-weight:700;
+    font-variant-numeric:tabular-nums;
+    display:block;margin-top:0.25rem;
+  }
+  .chart-wrap{
+    background:var(--surface);border-radius:16px;padding:1rem;
+  }
+
+  /* ---------- DAMPAK ---------- */
+  .dampak{padding:4rem 2rem;background:var(--surface)}
+  .dampak-intro{font-size:clamp(0.9rem,1.3vw,1.05rem);color:var(--text2);margin-bottom:2rem;max-width:600px}
+  .dampak-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;
+  }
+  .dampak-card{
+    background:var(--bg);border-radius:16px;padding:1.5rem;
+    display:flex;flex-direction:column;gap:0.5rem;
+    transition:transform 0.15s ease,box-shadow 0.15s ease;
+  }
+  .dampak-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+  .dampak-icon{font-size:1.75rem;line-height:1}
+  .dampak-card h3{font-family:var(--font-display);font-weight:600;font-size:1rem;letter-spacing:-0.01em}
+  .dampak-card p{font-size:0.85rem;color:var(--text2);line-height:1.5}
+  .dampak-card .analogi{
+    display:block;margin-top:auto;
+    font-size:0.8rem;color:var(--accent-dim);font-style:italic;
+    padding-top:0.5rem;border-top:1px solid var(--surface2);
+  }
+
+  /* ---------- KESIMPULAN ---------- */
+  .kesimpulan{padding:4rem 2rem;background:var(--bg)}
+  .kesimpulan-box{
+    background:var(--surface);border-radius:16px;padding:2rem;margin-bottom:2rem;
+  }
+  .kesimpulan-big{
+    font-family:var(--font-display);
+    font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;
+    color:var(--accent);margin-bottom:1.5rem;
+  }
+  .kesimpulan-box p{font-size:clamp(0.9rem,1.3vw,1.05rem);color:var(--text2);margin-bottom:1rem}
+  .kesimpulan-box p strong{color:var(--text)}
+  .kesimpulan-share{text-align:center}
+  .share-btn{
+    display:inline-block;padding:0.75rem 2rem;
+    background:var(--accent);color:#fff;text-decoration:none;
+    border-radius:100px;font-weight:600;font-size:0.9rem;
+    transition:background 0.15s;
+  }
+  .share-btn:hover{background:var(--accent-dim)}
+  .share-note{display:block;margin-top:0.5rem;font-size:0.75rem;color:var(--text2)}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:2rem;background:var(--surface);
+    border-top:1px solid var(--surface2);
+  }
+  .footer-content{
+    max-width:900px;margin:0 auto;
+    font-size:0.8rem;color:var(--text2);
+  }
+  .footer-content a{color:var(--accent)}
+  .footer-content p{margin-bottom:0.25rem}
+
+  /* ---------- LOADING ---------- */
+  .loading{opacity:0.4;position:relative}
+  .loading::after{
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(90deg,transparent,rgba(0,0,0,0.03),transparent);
+    animation:shimmer 1.5s infinite;
+  }
+  @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:500px){
+    header{padding:0.75rem 1rem}
+    .hero{padding:5rem 1rem 2rem}
+    .rate-box{padding:1rem 1.25rem}
+    .dampak{padding:3rem 1rem}
+    .chart-section{padding:3rem 1rem}
+    .realita{padding:3rem 1rem}
+    .kesimpulan{padding:3rem 1rem}
+    .dampak-grid{grid-template-columns:1fr}
+  }
+</style>
+
+<script>
+  const DAMPAK_DATA = [
+    {
+      icon: '\u{1F35C}',
+      title: 'Makanan & Minuman',
+      desc: 'Gandum, kedelai, susu bubuk, gula rafinasi — semua impor. Harga mie instant, roti, susu, kecap naik.',
+      analogi: 'Bahan baku dibeli pake dolar, lo beli dagangannya pake rupiah. Selaenya ditanggung lo.',
+    },
+    {
+      icon: '\u26FD',
+      title: 'BBM & Energi',
+      desc: 'Indonesia net importir minyak. Harga minyak dunia pake dolar. Bensin, elpiji, listrik — semua naik.',
+      analogi: 'Bayangin lo isi bensin motor. Bensinnya beli pake dolar. Lo bayar pake rupiah yang nilainya lagi anjlok.',
+    },
+    {
+      icon: '\u{1F3E5}',
+      title: 'Obat & Kesehatan',
+      desc: '90% bahan baku obat impor. Alat kesehatan juga impor. Rumah sakit & apotek bayar lebih mahal.',
+      analogi: 'Bahan baku obat dibeli pake dolar. Pas lo beli obat batuk di apotik, lo bayar kenaikan dolarnya.',
+    },
+    {
+      icon: '\u{1F4F1}',
+      title: 'Teknologi & Gadget',
+      desc: 'HP, laptop, chip, software langganan — semua harga internasional pake dolar. Mending lo siapin dompet.',
+      analogi: 'HP yang lo pake sekarang komponennya dibeli pake dolar. Setiap naik dolar, HP berikutkan lebih mahal.',
+    },
+    {
+      icon: '\u{1F330}',
+      title: 'Pertanian & Peternakan',
+      desc: 'Pupuk impor, pakan ternak impor, bibit impor. Biaya produksi naik, harga jual naik, lo yang beli.',
+      analogi: 'Peternak ayam beli pakan pake dolar. Harga ayam di warung naik. Lo makan ayam, lo yang ngerasain.',
+    },
+    {
+      icon: '\u{1F3ED}',
+      title: 'Properti & Bahan Bangunan',
+      desc: 'Besi, baja, semen, keramik — bahan baku & alat berat impor. Harga rumah & renovasi makin mahal.',
+      analogi: 'Mau bangun rumah? Semen, besi, cat aja bahan dasarnya impor. Dolar naik, ongkos bangun naik.',
+    },
+    {
+      icon: '\u{1F4B0}',
+      title: 'Utang Negara',
+      desc: 'Pemerintah punya utang pake dolar. Pas bayar butuh lebih banyak rupiah. Uang dari pajak — lo yang bayar.',
+      analogi: 'Lo minjem uang ke temen pake dollar. Pas mau bayar, nilai rupiah anjlok. Lo harus bayar lebih banyak.',
+    },
+    {
+      icon: '\u{1F393}',
+      title: 'Pendidikan & Beasiswa',
+      desc: 'Biaya kuliah LN, buku impor, beasiswa — semua pake dolar. Anak muda Indonesia paling kena dampak.',
+      analogi: 'Beasiswa lo dihitung pake dolar. Tiap dolar naik, uang beasiswanya makin tipis buat biaya hidup.',
+    },
+  ];
+
+  const STATE = {
+    rates: [],
+    currentRate: null,
+    prevRate: null,
+    chart: null,
+  };
+
+  /* ---- API ---- */
+  async function fetchLatest() {
+    const res = await fetch('https://api.frankfurter.dev/latest?from=USD&to=IDR');
+    const data = await res.json();
+    return data.rates.IDR;
+  }
+
+  async function fetchHistorical() {
+    const now = new Date();
+    const end = now.toISOString().split('T')[0];
+    const start = new Date(now);
+    start.setFullYear(start.getFullYear() - 1);
+    const startStr = start.toISOString().split('T')[0];
+    const res = await fetch(`https://api.frankfurter.dev/${startStr}..${end}?from=USD&to=IDR`);
+    const data = await res.json();
+    return Object.entries(data.rates).map(([date, rates]) => ({ date, rate: rates.IDR }));
+  }
+
+  function formatRate(r) { return 'Rp ' + Number(r).toLocaleString('id-ID', {minimumFractionDigits:0,maximumFractionDigits:2}) }
+  function formatShort(r) { return Number(r).toLocaleString('id-ID', {minimumFractionDigits:0,maximumFractionDigits:0}) }
+
+  /* ---- RENDER ---- */
+  function renderRate(value, prev) {
+    const el = document.getElementById('rate-value');
+    const change = document.getElementById('rate-change');
+    const navRate = document.getElementById('nav-rate');
+    const dateEl = document.getElementById('rate-date');
+
+    el.textContent = formatRate(value);
+    navRate.textContent = 'USD/IDR ' + formatShort(value);
+
+    const now = new Date();
+    dateEl.textContent = 'Data: ' + now.toLocaleDateString('id-ID', {year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'});
+
+    if (prev) {
+      const diff = value - prev;
+      const pct = (diff / prev) * 100;
+      change.textContent = (diff > 0 ? '+' : '') + diff.toFixed(2) + ' (' + (diff > 0 ? '+' : '') + pct.toFixed(2) + '%)';
+      change.className = 'rate-change ' + (diff > 0 ? 'up' : 'down');
+    }
+
+    // update stat blocks
+    document.getElementById('stat-now').textContent = formatShort(value);
+    const rates = STATE.rates;
+    if (rates.length) {
+      const vals = rates.map(r => r.rate);
+      vals.push(value);
+      const high = Math.max(...vals);
+      const low = Math.min(...vals);
+      document.getElementById('stat-high').textContent = formatShort(high);
+      document.getElementById('stat-low').textContent = formatShort(low);
+      const changePct = ((value - vals[0]) / vals[0]) * 100;
+      document.getElementById('stat-change').textContent = (changePct > 0 ? '+' : '') + changePct.toFixed(2) + '%';
+      document.getElementById('stat-change').style.color = changePct > 0 ? 'var(--accent)' : 'var(--green)';
+    }
+  }
+
+  function renderDampak() {
+    const grid = document.getElementById('dampakGrid');
+    grid.innerHTML = DAMPAK_DATA.map(d => `
+      <div class="dampak-card">
+        <span class="dampak-icon">${d.icon}</span>
+        <h3>${d.title}</h3>
+        <p>${d.desc}</p>
+        <span class="analogi">${d.analogi}</span>
+      </div>
+    `).join('');
+  }
+
+  function renderChart(rates) {
+    const ctx = document.getElementById('rateChart').getContext('2d');
+    const labels = rates.map(r => r.date);
+    const data = rates.map(r => r.rate);
+
+    if (STATE.chart) { STATE.chart.destroy(); }
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient.addColorStop(0, 'oklch(0.52 0.22 30 / 0.2)');
+    gradient.addColorStop(1, 'oklch(0.52 0.22 30 / 0)');
+
+    STATE.chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: [{
+          label: 'USD/IDR',
+          data,
+          borderColor: 'oklch(0.52 0.22 30)',
+          backgroundColor: gradient,
+          fill: true,
+          tension: 0.1,
+          pointRadius: 0,
+          pointHitRadius: 10,
+          borderWidth: 2,
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        aspectRatio: window.innerWidth < 600 ? 1.2 : 2.2,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            backgroundColor: 'oklch(0.15 0.02 60)',
+            titleFont: { family: 'Sora', size: 12 },
+            bodyFont: { family: 'Bricolage Grotesque', size: 14, weight: 'bold' },
+            padding: 12,
+            cornerRadius: 8,
+            callbacks: {
+              label: (ctx) => 'Rp ' + Number(ctx.parsed.y).toLocaleString('id-ID'),
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: {
+              maxTicksLimit: 10,
+              font: { family: 'Sora', size: 10 },
+              color: 'oklch(0.45 0.02 60)',
+            }
+          },
+          y: {
+            grid: { color: 'oklch(0.9 0.01 60 / 0.5)' },
+            ticks: {
+              font: { family: 'Sora', size: 10 },
+              color: 'oklch(0.45 0.02 60)',
+              callback: (v) => 'Rp ' + Number(v).toLocaleString('id-ID'),
+            }
+          }
+        },
+        interaction: {
+          intersect: false,
+          mode: 'index',
+        },
+      }
+    });
+  }
+
+  /* ---- POLLING ---- */
+  async function refresh() {
+    try {
+      const [latest, historical] = await Promise.all([fetchLatest(), fetchHistorical()]);
+      STATE.prevRate = STATE.currentRate;
+      STATE.currentRate = latest;
+      STATE.rates = historical;
+      renderRate(latest, STATE.prevRate);
+      renderChart(historical);
+    } catch (e) {
+      console.error('Gagal ambil data:', e);
+      document.getElementById('rate-value').textContent = 'Gagal muat data';
+    }
+  }
+
+  /* ---- INIT ---- */
+  renderDampak();
+  refresh();
+  setInterval(refresh, 120000);
+</script>
+
+</body>
+</html>
