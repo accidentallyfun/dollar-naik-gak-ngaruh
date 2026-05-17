@@ -24,8 +24,8 @@
   <nav>
     <span class="logo"><span class="logo-dot"></span>USD/IDR</span>
     <div class="nav-links">
-      <a href="#dampak" class="nav-link">Dampak</a>
-      <a href="#sumber" class="nav-link">Sumber</a>
+      <a href="#dampak" class="nav-link nav-cta">Dampak</a>
+      <a href="#sumber" class="nav-link nav-sumber">Sumber</a>
       <span class="live-rate" id="nav-rate">—</span>
     </div>
   </nav>
@@ -167,7 +167,7 @@
   <div class="footer-content">
     <p>Data kurs dari <a href="https://www.frankfurter.app" target="_blank" rel="noopener">Frankfurter API</a> (European Central Bank).</p>
     <p>Dibuat untuk edukasi publik. Silakan disebarkan.</p>
-    <p class="footer-watermark">made by <a href="https://x.com/shafryyusuf" target="_blank" rel="noopener">@shafryyusuf</a></p>
+    <p class="footer-watermark">made by <a href="https://instagram.com/shafryyusuf" target="_blank" rel="noopener">@shafryyusuf</a></p>
   </div>
 </footer>
 
@@ -226,6 +226,14 @@
   }
   .nav-link:hover{color:var(--accent)}
   .nav-link:hover::after{transform:scaleX(1);transform-origin:left}
+  .nav-cta{
+    background:var(--accent);color:#fff!important;
+    padding:0.35rem 1rem;border-radius:100px;
+    font-weight:600;
+  }
+  .nav-cta::after{display:none!important}
+  .nav-cta:hover{background:var(--accent-dim)!important}
+  .nav-sumber{margin-left:auto}
   .live-rate{
     font-variant-numeric:tabular-nums;
     padding:0.2rem 0.5rem;border-radius:4px;
