@@ -288,19 +288,26 @@
     border-radius:50%;
     transition:all 0.2s;
     position:relative;
-    animation:sector-float 4s ease-in-out infinite;
     box-shadow:0 4px 12px oklch(0.52 0.22 30 / 0.25);
   }
-  .hero-sector-btn:nth-child(2){animation-delay:0.5s}
-  .hero-sector-btn:nth-child(3){animation-delay:1s}
-  .hero-sector-btn:nth-child(4){animation-delay:0.3s}
-  .hero-sector-btn:nth-child(5){animation-delay:0.8s}
-  .hero-sector-btn:nth-child(6){animation-delay:1.5s}
-  .hero-sector-btn:nth-child(7){animation-delay:0.2s}
-  .hero-sector-btn:nth-child(8){animation-delay:0.7s}
-  .hero-sector-btn:hover{transform:scale(1.1);box-shadow:0 6px 20px oklch(0.52 0.22 30 / 0.35)}
+  .hero-sector-btn:nth-child(1){animation:float1 4s ease-in-out infinite}
+  .hero-sector-btn:nth-child(2){animation:float2 4.5s ease-in-out infinite 0.3s}
+  .hero-sector-btn:nth-child(3){animation:float3 3.8s ease-in-out infinite 0.7s}
+  .hero-sector-btn:nth-child(4){animation:float4 4.2s ease-in-out infinite 0.2s}
+  .hero-sector-btn:nth-child(5){animation:float5 5s ease-in-out infinite 0.6s}
+  .hero-sector-btn:nth-child(6){animation:float6 4.6s ease-in-out infinite 1s}
+  .hero-sector-btn:nth-child(7){animation:float7 3.5s ease-in-out infinite 0.4s}
+  .hero-sector-btn:nth-child(8){animation:float8 4.8s ease-in-out infinite 0.8s}
+  .hero-sector-btn:hover{transform:scale(1.1) !important;box-shadow:0 6px 20px oklch(0.52 0.22 30 / 0.35)}
   .hero-sector-btn svg{width:1.4rem;height:1.4rem;flex-shrink:0}
-  @keyframes sector-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes float1{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-7px) rotate(2deg)}}
+  @keyframes float2{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-5px) rotate(-1deg)}66%{transform:translateY(3px) rotate(1deg)}}
+  @keyframes float3{0%,100%{transform:translate(0,0)}25%{transform:translate(-3px,-6px)}75%{transform:translate(3px,2px)}}
+  @keyframes float4{0%,100%{transform:translateY(0)}40%{transform:translateY(-8px)}60%{transform:translateY(-2px)}}
+  @keyframes float5{0%,100%{transform:translate(0,0) rotate(0deg)}30%{transform:translate(2px,-4px) rotate(-2deg)}70%{transform:translate(-2px,4px) rotate(2deg)}}
+  @keyframes float6{0%,100%{transform:translateY(0)}25%{transform:translateY(-3px)}50%{transform:translateY(-6px)}75%{transform:translateY(2px)}}
+  @keyframes float7{0%,100%{transform:translate(0,0)}50%{transform:translate(-4px,-5px)}}
+  @keyframes float8{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-5px) scale(1.03)}}
 
   .hero-rate{width:100%}
   .rate-box{
