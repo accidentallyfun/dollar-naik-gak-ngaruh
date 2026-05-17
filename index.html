@@ -43,6 +43,10 @@
           <cite>— Prabowo Subianto, Presiden RI</cite>
         </blockquote>
       </div>
+      <a href="#dampak" class="hero-cta">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
+        Lihat 8 Sektor Terdampak
+      </a>
     </div>
     <div class="hero-rate" id="hero-rate">
       <div class="rate-box">
@@ -70,7 +74,7 @@
           <p class="realita-punch">Jadi meskipun lo gak megang dolar, <strong>semua harga barang di sekitar lo</strong> ikut naik. Gak percaya?</p>
         </div>
         <div class="realita-analogi">
-          <span class="big-analogi">&#x1F9D1;&#x200D;&#x1F373;</span>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="big-analogi"><path d="M12 2a3 3 0 00-3 3v1H7a2 2 0 000 4h.17A4 4 0 008 16h8a4 4 0 00.83-6H17a2 2 0 000-4h-2V5a3 3 0 00-3-3z"/><path d="M9 16v5"/><path d="M15 16v5"/></svg>
           <p class="analogi-title">Analogi Sederhana</p>
           <p>Lo punya warung. Lo jualan es teh. Tiba-tiba harga gula naik, harga es batu naik, harga gelas plastik naik. Lo bilang "gak ngaruh" karena lo jual es teh, bukan gula.</p>
           <p><strong>Tapi lo jual es teh <em>pakai</em> gula.</strong> Begitu juga Indonesia — kita jual barang <em>pakai</em> dolar buat beli bahan baku.</p>
@@ -221,6 +225,18 @@
     color:var(--text2);opacity:0.7;
   }
 
+  .hero-cta{
+    display:inline-flex;align-items:center;gap:0.5rem;
+    margin-top:1rem;padding:0.6rem 1.25rem 0.6rem 1rem;
+    background:var(--accent);color:#fff;text-decoration:none;
+    border-radius:100px;font-weight:600;font-size:0.85rem;
+    transition:transform 0.2s,box-shadow 0.2s;
+    animation:pulse-cta 3s ease-in-out infinite;
+  }
+  .hero-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px oklch(0.52 0.22 30 / 0.3)}
+  @keyframes pulse-cta{0%,100%{box-shadow:0 0 0 0 oklch(0.52 0.22 30 / 0.4)}50%{box-shadow:0 0 0 8px oklch(0.52 0.22 30 / 0)}}
+  .hero-cta svg{flex-shrink:0}
+
   .hero-rate{margin-top:auto;width:100%}
   .rate-box{
     display:inline-flex;flex-direction:column;
@@ -280,7 +296,7 @@
     background:var(--bg);border-radius:16px;padding:1.5rem;
     align-self:start;
   }
-  .big-analogi{font-size:2.5rem;display:block;margin-bottom:0.5rem}
+  .big-analogi{display:block;margin-bottom:0.75rem;width:2.5rem;height:2.5rem}
   .analogi-title{font-weight:700;font-size:0.9rem;margin-bottom:0.75rem;color:var(--text)}
   .realita-analogi p{font-size:0.9rem;color:var(--text2);margin-bottom:0.75rem}
   .realita-analogi p:last-child{margin-bottom:0}
@@ -318,7 +334,12 @@
     transition:transform 0.15s ease,box-shadow 0.15s ease;
   }
   .dampak-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,0,0,0.06)}
-  .dampak-icon{font-size:1.75rem;line-height:1}
+  .dampak-icon{
+    width:2.25rem;height:2.25rem;display:flex;align-items:center;justify-content:center;
+    background:color-mix(in oklch, var(--accent) 10%, transparent);
+    border-radius:10px;color:var(--accent);
+  }
+  .dampak-icon svg{width:1.2rem;height:1.2rem}
   .dampak-card h3{font-family:var(--font-display);font-weight:600;font-size:1rem;letter-spacing:-0.01em}
   .dampak-card p{font-size:0.85rem;color:var(--text2);line-height:1.5}
   .dampak-card .analogi{
@@ -371,64 +392,107 @@
   @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
   /* ---------- RESPONSIVE ---------- */
-  @media(max-width:500px){
-    header{padding:0.75rem 1rem}
-    .hero{padding:5rem 1rem 2rem}
-    .rate-box{padding:1rem 1.25rem}
-    .dampak{padding:3rem 1rem}
-    .chart-section{padding:3rem 1rem}
-    .realita{padding:3rem 1rem}
-    .kesimpulan{padding:3rem 1rem}
+  @media(max-width:768px){
+    .hero{padding:5rem 1.5rem 2rem}
+    .hero-kicker{font-size:0.6rem}
+    .rate-box{padding:0.9rem 1.25rem}
+    .rate-value{font-size:clamp(1.75rem,6vw,2.5rem)}
+    .hero-rate{margin-top:2rem}
+    .realita-grid{grid-template-columns:1fr;gap:1.5rem}
+    .chart-stats{grid-template-columns:repeat(2,1fr)}
+    .dampak-intro{font-size:0.9rem}
+  }
+  @media(max-width:480px){
+    header{padding:0.6rem 1rem;font-size:0.8rem}
+    .hero{padding:4.5rem 1rem 2rem;min-height:94dvh}
+    .hero-kicker{font-size:0.55rem;letter-spacing:0.12em}
+    .hero-statement blockquote{font-size:0.8rem;padding:0.75rem 1rem}
+    .hero-statement cite{font-size:0.7rem}
+    .hero-cta{font-size:0.8rem;padding:0.5rem 1rem}
+    .rate-box{padding:0.75rem 1rem;border-radius:12px}
+    .rate-value{font-size:clamp(1.5rem,7vw,2rem)}
+    .rate-change{font-size:0.75rem}
+    .rate-date{font-size:0.65rem}
+    .hero-scroll{font-size:0.6rem}
+    .realita,.chart-section,.dampak,.kesimpulan{padding:2.5rem 1rem}
+    .realita h2,.chart-section h2,.dampak h2,.kesimpulan h2{font-size:1.35rem;margin-bottom:1.25rem}
+    .realita-text p{font-size:0.85rem}
+    .realita-punch{font-size:0.9rem!important;padding:0.75rem}
+    .realita-analogi{padding:1.15rem}
+    .analogi-title{font-size:0.8rem}
+    .realita-analogi p{font-size:0.8rem}
+    .chart-stats{gap:0.6rem}
+    .stat-block{padding:0.7rem;border-radius:10px}
+    .stat-label{font-size:0.6rem}
+    .stat-value{font-size:clamp(0.9rem,3.5vw,1.1rem)}
+    .chart-wrap{padding:0.5rem;border-radius:12px}
+    .dampak-intro{font-size:0.85rem;margin-bottom:1.25rem}
+    .dampak-card{padding:1.15rem}
+    .dampak-icon{width:1.85rem;height:1.85rem;border-radius:8px}
+    .dampak-icon svg{width:1rem;height:1rem}
+    .dampak-card h3{font-size:0.9rem}
+    .dampak-card p{font-size:0.8rem}
+    .dampak-card .analogi{font-size:0.75rem}
+    .kesimpulan-box{padding:1.25rem;border-radius:12px}
+    .kesimpulan-big{font-size:1.4rem}
+    .kesimpulan-box p{font-size:0.85rem}
+    .share-btn{font-size:0.8rem;padding:0.6rem 1.5rem}
+    footer{padding:1.5rem 1rem}
+    .footer-content{font-size:0.7rem}
     .dampak-grid{grid-template-columns:1fr}
+  }
+  @media(min-width:769px)and(max-width:1024px){
+    .hero{padding:6rem 2rem 3rem}
+    .dampak-grid{grid-template-columns:repeat(2,1fr)}
   }
 </style>
 
 <script>
   const DAMPAK_DATA = [
     {
-      icon: '\u{1F35C}',
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>',
       title: 'Makanan & Minuman',
       desc: 'Gandum, kedelai, susu bubuk, gula rafinasi — semua impor. Harga mie instant, roti, susu, kecap naik.',
       analogi: 'Bahan baku dibeli pake dolar, lo beli dagangannya pake rupiah. Selaenya ditanggung lo.',
     },
     {
-      icon: '\u26FD',
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>',
       title: 'BBM & Energi',
       desc: 'Indonesia net importir minyak. Harga minyak dunia pake dolar. Bensin, elpiji, listrik — semua naik.',
       analogi: 'Bayangin lo isi bensin motor. Bensinnya beli pake dolar. Lo bayar pake rupiah yang nilainya lagi anjlok.',
     },
     {
-      icon: '\u{1F3E5}',
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>',
       title: 'Obat & Kesehatan',
       desc: '90% bahan baku obat impor. Alat kesehatan juga impor. Rumah sakit & apotek bayar lebih mahal.',
       analogi: 'Bahan baku obat dibeli pake dolar. Pas lo beli obat batuk di apotik, lo bayar kenaikan dolarnya.',
     },
     {
-      icon: '\u{1F4F1}',
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
       title: 'Teknologi & Gadget',
       desc: 'HP, laptop, chip, software langganan — semua harga internasional pake dolar. Mending lo siapin dompet.',
       analogi: 'HP yang lo pake sekarang komponennya dibeli pake dolar. Setiap naik dolar, HP berikutkan lebih mahal.',
     },
     {
-      icon: '\u{1F330}',
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>',
       title: 'Pertanian & Peternakan',
       desc: 'Pupuk impor, pakan ternak impor, bibit impor. Biaya produksi naik, harga jual naik, lo yang beli.',
       analogi: 'Peternak ayam beli pakan pake dolar. Harga ayam di warung naik. Lo makan ayam, lo yang ngerasain.',
     },
     {
-      icon: '\u{1F3ED}',
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
       title: 'Properti & Bahan Bangunan',
       desc: 'Besi, baja, semen, keramik — bahan baku & alat berat impor. Harga rumah & renovasi makin mahal.',
       analogi: 'Mau bangun rumah? Semen, besi, cat aja bahan dasarnya impor. Dolar naik, ongkos bangun naik.',
     },
     {
-      icon: '\u{1F4B0}',
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>',
       title: 'Utang Negara',
       desc: 'Pemerintah punya utang pake dolar. Pas bayar butuh lebih banyak rupiah. Uang dari pajak — lo yang bayar.',
       analogi: 'Lo minjem uang ke temen pake dollar. Pas mau bayar, nilai rupiah anjlok. Lo harus bayar lebih banyak.',
     },
     {
-      icon: '\u{1F393}',
+      icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>',
       title: 'Pendidikan & Beasiswa',
       desc: 'Biaya kuliah LN, buku impor, beasiswa — semua pake dolar. Anak muda Indonesia paling kena dampak.',
       analogi: 'Beasiswa lo dihitung pake dolar. Tiap dolar naik, uang beasiswanya makin tipis buat biaya hidup.',
