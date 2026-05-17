@@ -31,9 +31,6 @@
   </nav>
 </header>
 
-<div class="deco-circle deco-1"></div>
-<div class="deco-circle deco-2"></div>
-<div class="deco-circle deco-3"></div>
 
 <main>
 
@@ -67,10 +64,7 @@
         </div>
       </div>
     </div>
-    <div class="hero-scroll">
-      <span>Scroll buat liat realita</span>
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12M10 16l5-5M10 16l-5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
+    <div class="hero-scroll">Scroll buat liat realita</div>
   </section>
 
   <!-- ============ REALITA ============ -->
@@ -245,8 +239,8 @@
   }
   .hero-left{flex:1;min-width:0}
   .hero-right{
-    flex-shrink:0;padding-top:1rem;
-    display:flex;flex-direction:column;align-items:flex-end;
+    flex-shrink:0;
+    display:flex;flex-direction:column;align-items:flex-start;
     overflow:visible;
   }
   .hero-kicker{
@@ -332,11 +326,10 @@
 
   .hero-scroll{
     position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);
-    display:flex;flex-direction:column;align-items:center;gap:0.25rem;
-    color:var(--text2);font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;
+    font-size:0.65rem;color:var(--text2);letter-spacing:0.1em;
     animation:float 2s ease-in-out infinite;
   }
-  @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+  @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
 
   /* ---------- REALITA ---------- */
   .realita{padding:4rem 2rem;background:var(--surface)}
@@ -396,36 +389,28 @@
 
   /* ---------- DAMPAK ---------- */
   .dampak{padding:5rem 2rem;background:var(--surface)}
-  .dampak-intro{font-size:clamp(0.9rem,1.3vw,1.05rem);color:var(--text2);margin-bottom:2.5rem;max-width:600px}
+  .dampak-intro{font-size:clamp(0.9rem,1.3vw,1.05rem);color:var(--text2);margin-bottom:3rem;max-width:600px}
   .dampak-grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;
+    display:flex;flex-direction:column;
+    max-width:680px;gap:0;
   }
-  .dampak-card{
-    background:var(--bg);border-radius:16px;padding:1.75rem;
-    display:flex;flex-direction:column;gap:0.85rem;
-    transition:transform 0.2s ease,box-shadow 0.2s ease;
-    position:relative;overflow:hidden;
-    border-top:3px solid var(--accent);
-    box-shadow:0 1px 3px rgba(0,0,0,0.02);
+  .dampak-item{
+    display:flex;gap:1.25rem;padding:1.5rem 0;
+    border-bottom:1px solid var(--surface2);
   }
-  .dampak-card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,0.06)}
-  .dampak-card-header{
-    display:flex;align-items:center;gap:0.85rem;
-  }
+  .dampak-item:last-child{border-bottom:none}
   .dampak-icon{
-    width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;
-    background:color-mix(in oklch, var(--accent) 12%, transparent);
-    border-radius:12px;color:var(--accent);flex-shrink:0;
+    width:3.5rem;height:3.5rem;display:flex;align-items:center;justify-content:center;
+    background:var(--accent);color:#fff;border-radius:50%;flex-shrink:0;margin-top:0.15rem;
   }
-  .dampak-icon svg{width:1.4rem;height:1.4rem}
-  .dampak-card h3{font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:-0.01em}
-  .dampak-card p{font-size:0.88rem;color:var(--text2);line-height:1.6}
+  .dampak-icon svg{width:1.5rem;height:1.5rem}
+  .dampak-item-content{flex:1;min-width:0}
+  .dampak-item-content h3{font-family:var(--font-display);font-weight:700;font-size:1.1rem;letter-spacing:-0.01em;margin-bottom:0.4rem}
+  .dampak-item-content p{font-size:0.88rem;color:var(--text2);line-height:1.6;margin-bottom:0.75rem}
   .dampak-analogi{
-    margin-top:auto;padding:0.75rem 1rem;
-    background:color-mix(in oklch, var(--accent) 5%, transparent);
-    border-left:3px solid var(--accent-dim);
-    border-radius:0 8px 8px 0;
-    font-size:0.8rem;color:var(--accent-dim);font-style:italic;
+    font-size:0.85rem;color:var(--accent-dim);font-style:italic;
+    padding:0.6rem 0 0.6rem 1rem;
+    border-left:2px solid var(--accent-dim);
   }
 
   /* ---------- KESIMPULAN ---------- */
@@ -503,16 +488,7 @@
   .footer-content p{margin-bottom:0.25rem}
   .footer-watermark{margin-top:0.75rem!important;padding-top:0.75rem;border-top:1px solid var(--surface2);font-size:0.75rem;color:var(--text2)}
 
-  /* ---------- DECORATIVE ---------- */
-  .deco-circle{
-    position:fixed;border-radius:50%;pointer-events:none;z-index:0;
-    background:color-mix(in oklch, var(--accent) 3%, transparent);
-  }
-  .deco-1{width:40vw;height:40vw;top:-10vw;right:-10vw}
-  .deco-2{width:30vw;height:30vw;bottom:10vh;left:-8vw}
-  .deco-3{width:20vw;height:20vw;top:40vh;right:5vw}
-
-  /* ---------- LOADING ---------- */
+  </style>/* ---------- LOADING ---------- */
   .loading{opacity:0.4;position:relative}
   .loading::after{
     content:'';position:absolute;inset:0;
@@ -584,13 +560,13 @@
     .stat-value{font-size:clamp(0.9rem,3.5vw,1.1rem)}
     .chart-wrap{padding:0.5rem;border-radius:12px}
     .dampak-intro{font-size:0.85rem;margin-bottom:1.5rem}
-    .dampak-card{padding:1.25rem;gap:0.6rem}
-    .dampak-card-header{gap:0.6rem}
-    .dampak-icon{width:2.25rem;height:2.25rem;border-radius:10px}
-    .dampak-icon svg{width:1.15rem;height:1.15rem}
-    .dampak-card h3{font-size:0.9rem}
-    .dampak-card p{font-size:0.8rem}
-    .dampak-analogi{font-size:0.75rem;padding:0.6rem 0.85rem}
+    .dampak-item{padding:1.25rem 0;gap:1rem}
+    .dampak-icon{width:2.75rem;height:2.75rem}
+    .dampak-icon svg{width:1.2rem;height:1.2rem}
+    .dampak-item-content h3{font-size:0.95rem}
+    .dampak-item-content p{font-size:0.82rem}
+    .dampak-analogi{font-size:0.8rem;padding:0.5rem 0 0.5rem 0.85rem}
+    .dampak-grid{max-width:100%}
     .kesimpulan-box{padding:1.25rem;border-radius:12px}
     .kesimpulan-big{font-size:1.4rem}
     .kesimpulan-box p{font-size:0.85rem}
@@ -742,13 +718,13 @@
   function renderDampak() {
     const grid = document.getElementById('dampakGrid');
     grid.innerHTML = DAMPAK_DATA.map(d => `
-      <div class="dampak-card">
-        <div class="dampak-card-header">
-          <span class="dampak-icon">${d.icon}</span>
+      <div class="dampak-item">
+        <span class="dampak-icon">${d.icon}</span>
+        <div class="dampak-item-content">
           <h3>${d.title}</h3>
+          <p>${d.desc}</p>
+          <div class="dampak-analogi">${d.analogi}</div>
         </div>
-        <p>${d.desc}</p>
-        <div class="dampak-analogi">${d.analogi}</div>
       </div>
     `).join('');
   }
