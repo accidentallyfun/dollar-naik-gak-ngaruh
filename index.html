@@ -22,11 +22,10 @@
 
 <header>
   <nav>
-    <span class="logo"><span class="logo-dot"></span>USD/IDR</span>
+    <span class="logo">USD/IDR</span>
     <div class="nav-links">
-      <a href="#dampak" class="nav-link nav-cta">Dampak</a>
-      <a href="#sumber" class="nav-link nav-sumber">Sumber</a>
-      <span class="live-rate" id="nav-rate">—</span>
+      <a href="#dampak" class="nav-link">Dampak</a>
+      <a href="#sumber" class="nav-link">Sumber</a>
     </div>
   </nav>
 </header>
@@ -227,35 +226,21 @@
   /* ---------- NAV ---------- */
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    padding:1rem 2rem;
+    padding:0.75rem 2rem;
     display:flex;justify-content:space-between;align-items:center;
     background:color-mix(in oklch, var(--bg) 80%, transparent);
     backdrop-filter:blur(12px);
   }
   .logo{
-    font-weight:800;font-family:var(--font-display);letter-spacing:-0.03em;
-    color:var(--text);font-size:1.05rem;text-decoration:none;
-    display:flex;align-items:center;gap:0.4rem;
+    font-weight:700;font-family:var(--font-display);letter-spacing:-0.03em;
+    color:var(--text);font-size:0.9rem;text-decoration:none;
   }
-  .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse-dot 2s ease-in-out infinite}
-  @keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:0.3}}
   .nav-links{display:flex;align-items:center;gap:1.25rem}
   .nav-link{
-    font-size:0.85rem;text-decoration:none;color:var(--text2);font-weight:500;
+    font-size:0.8rem;text-decoration:none;color:var(--text2);font-weight:500;
     transition:color 0.15s;
   }
   .nav-link:hover{color:var(--text)}
-  .nav-cta{
-    background:var(--accent);color:#fff!important;
-    padding:0.4rem 1.1rem;border-radius:100px;
-    font-weight:600;font-size:0.85rem;
-  }
-  .nav-cta:hover{background:var(--accent-dim)!important;color:#fff!important}
-  .nav-sumber{margin-left:auto}
-  .live-rate{
-    font-variant-numeric:tabular-nums;
-    color:var(--text2);font-weight:600;font-size:0.85rem;
-  }
 
   /* ---------- HERO ---------- */
   .hero{
@@ -444,30 +429,25 @@
   }
 
   /* ---------- DAMPAK ---------- */
-  .dampak{padding:5rem 2rem;background:var(--surface)}
-  .dampak-intro{font-size:clamp(0.9rem,1.3vw,1.05rem);color:var(--text2);margin-bottom:3rem;max-width:600px}
+  .dampak{padding:3rem 2rem;background:var(--surface)}
+  .dampak-intro{font-size:clamp(0.85rem,1.2vw,1rem);color:var(--text2);margin-bottom:1.5rem;max-width:600px}
   .dampak-grid{
     display:flex;flex-direction:column;
     max-width:680px;gap:0;
   }
   .dampak-item{
-    display:flex;gap:1rem;padding:1.15rem 0;
+    display:flex;gap:0.75rem;padding:0.75rem 0;
     border-bottom:1px solid var(--surface2);
   }
   .dampak-item:last-child{border-bottom:none}
   .dampak-icon{
-    width:2.75rem;height:2.75rem;display:flex;align-items:center;justify-content:center;
-    background:var(--accent);color:#fff;border-radius:50%;flex-shrink:0;margin-top:0.1rem;
+    width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;
+    background:var(--accent);color:#fff;border-radius:50%;flex-shrink:0;margin-top:0.15rem;
   }
-  .dampak-icon svg{width:1.2rem;height:1.2rem}
+  .dampak-icon svg{width:0.9rem;height:0.9rem}
   .dampak-item-content{flex:1;min-width:0}
-  .dampak-item-content h3{font-family:var(--font-display);font-weight:700;font-size:1rem;letter-spacing:-0.01em;margin-bottom:0.3rem}
-  .dampak-item-content p{font-size:0.85rem;color:var(--text2);line-height:1.5;margin-bottom:0.5rem}
-  .dampak-analogi{
-    font-size:0.8rem;color:var(--accent-dim);font-style:italic;
-    padding:0.4rem 0 0.4rem 0.85rem;
-    border-left:2px solid var(--accent-dim);
-  }
+  .dampak-item-content h3{font-family:var(--font-display);font-weight:700;font-size:0.9rem;letter-spacing:-0.01em;margin-bottom:0.1rem}
+  .dampak-item-content p{font-size:0.8rem;color:var(--text2);line-height:1.4}
 
   /* ---------- KESIMPULAN ---------- */
   .kesimpulan{padding:4rem 2rem;background:var(--bg)}
@@ -536,7 +516,7 @@
   }
   @media(max-width:480px){
     .hero{padding:5rem 1rem 2rem}
-    .realita,.fakta-sejarah,.chart-section,.dampak,.kesimpulan,.sumber{padding:3rem 1rem}
+    .realita,.fakta-sejarah,.chart-section,.dampak,.kesimpulan,.sumber{padding:2rem 1rem}
     .hero-sector-btn{width:2.5rem;height:2.5rem}
     .hero-sector-btn svg{width:0.85rem;height:0.85rem}
     .rate-box{padding:0.85rem 1.25rem}
@@ -677,7 +657,6 @@
         <div class="dampak-item-content">
           <h3>${d.title}</h3>
           <p>${d.desc}</p>
-          <div class="dampak-analogi">${d.analogi}</div>
         </div>
       </div>
     `).join('');
