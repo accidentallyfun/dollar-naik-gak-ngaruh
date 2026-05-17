@@ -13,8 +13,9 @@
 
 <header>
   <nav>
-    <a href="/" class="logo-nav"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Beranda</a>
-    <span class="nav-title">Sumber Data</span>
+    <a href="/" class="logo">USD/IDR</a>
+    <span class="nav-sep">/</span>
+    <span class="nav-current">Sumber</span>
   </nav>
 </header>
 
@@ -59,18 +60,18 @@
 
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
-    padding:1rem 2rem;
-    display:flex;justify-content:space-between;align-items:center;
+    padding:0.75rem 2rem;
+    display:flex;align-items:center;
     background:color-mix(in oklch, var(--bg) 80%, transparent);
     backdrop-filter:blur(12px);
   }
-  .logo-nav{
-    display:flex;align-items:center;gap:0.35rem;
-    text-decoration:none;color:var(--accent);font-weight:600;font-size:0.85rem;
+  nav{display:flex;align-items:center;gap:0.5rem}
+  .logo{
+    font-weight:700;font-family:var(--font-display);letter-spacing:-0.03em;
+    color:var(--text);font-size:0.9rem;text-decoration:none;
   }
-  .logo-nav:hover{color:var(--accent-dim)}
-  .logo-nav svg{width:1rem;height:1rem}
-  .nav-title{font-size:0.85rem;color:var(--text2)}
+  .nav-sep{color:var(--text2);opacity:0.25;font-size:0.8rem;pointer-events:none;user-select:none}
+  .nav-current{font-size:0.8rem;color:var(--text2);font-weight:500}
 
   .sumber{padding:6rem 2rem 4rem;background:var(--bg)}
   .sumber-content{max-width:900px;margin:0 auto}

@@ -22,11 +22,11 @@
 
 <header>
   <nav>
-    <span class="logo">USD/IDR</span>
-    <div class="nav-links">
-      <a href="#dampak" class="nav-link">Dampak</a>
-      <a href="#sumber" class="nav-link">Sumber</a>
-    </div>
+    <a href="/" class="logo">USD/IDR</a>
+    <span class="nav-sep">/</span>
+    <a href="#dampak" class="nav-link">Dampak</a>
+    <span class="nav-sep">/</span>
+    <a href="/sumber" class="nav-link">Sumber</a>
   </nav>
 </header>
 
@@ -171,21 +171,11 @@
     </div>
   </section>
 
-  <!-- ============ SUMBER ============ -->
-  <section class="sumber" id="sumber">
-    <div class="sumber-content reveal">
-      <span class="section-tag">#Sumber</span>
-      <h2>Data &amp; Referensi</h2>
-      <p class="sumber-intro">Semua data dan fakta di halaman ini berasal dari sumber berikut:</p>
-      <ul class="sumber-list">
-        <li><a href="https://www.ceicdata.com/en/indonesia/foreign-exchange-rate" target="_blank" rel="noopener">CEIC Data</a> — Indonesia Exchange Rate against USD (1967–2025). Data historis kurs bulanan sejak 1967, rekor terendah Rp 137/USD.</li>
-        <li><a href="https://asiatimes.com" target="_blank" rel="noopener">Asia Times</a> — "Rupiah plunges to record low" (15 Mei 2026). Kurs Rp 17.513/USD, level terlemah sepanjang sejarah Indonesia.</li>
-        <li><a href="https://www.bi.go.id" target="_blank" rel="noopener">Bank Indonesia</a> — Kurs referensi resmi USD/IDR (Jakarta Interbank Spot Dollar Rate).</li>
-        <li><a href="https://www.imf.org/en/Data" target="_blank" rel="noopener">International Monetary Fund</a> — International Financial Statistics: historical exchange rate data.</li>
-        <li><a href="https://www.frankfurter.app" target="_blank" rel="noopener">Frankfurter API</a> — European Central Bank reference rates. Sumber data kurs real-time di halaman ini.</li>
-        <li><a href="https://www.focus-economics.com/country-indicator/indonesia/exchange-rate" target="_blank" rel="noopener">FocusEconomics</a> — Rupiah exchange rate analysis, forecast, dan historical data.</li>
-      </ul>
-      <p class="sumber-note">Halaman ini dibuat untuk edukasi publik. Silakan verifikasi data dari sumber-sumber di atas secara mandiri.</p>
+  <!-- ============ LIHAT SUMBER ============ -->
+  <section class="lihat-sumber">
+    <div class="lihat-sumber-content reveal">
+      <p>Data dan fakta di halaman ini bersumber dari Bank Indonesia, CEIC Data, IMF, World Bank, Asia Times, dan 40+ referensi lainnya.</p>
+      <a href="/sumber" class="lihat-sumber-link">Lihat Semua Sumber →</a>
     </div>
   </section>
 
@@ -227,15 +217,16 @@
   header{
     position:fixed;top:0;left:0;right:0;z-index:100;
     padding:0.75rem 2rem;
-    display:flex;justify-content:space-between;align-items:center;
+    display:flex;align-items:center;
     background:color-mix(in oklch, var(--bg) 80%, transparent);
     backdrop-filter:blur(12px);
   }
+  nav{display:flex;align-items:center;gap:0.5rem}
   .logo{
     font-weight:700;font-family:var(--font-display);letter-spacing:-0.03em;
     color:var(--text);font-size:0.9rem;text-decoration:none;
   }
-  .nav-links{display:flex;align-items:center;gap:1.25rem}
+  .nav-sep{color:var(--text2);opacity:0.25;font-size:0.8rem;pointer-events:none;user-select:none}
   .nav-link{
     font-size:0.8rem;text-decoration:none;color:var(--text2);font-weight:500;
     transition:color 0.15s;
@@ -436,18 +427,46 @@
     max-width:680px;gap:0;
   }
   .dampak-item{
-    display:flex;gap:0.75rem;padding:0.75rem 0;
+    display:flex;gap:0.75rem;padding:0.65rem 0;
     border-bottom:1px solid var(--surface2);
+    cursor:pointer;transition:background 0.15s;
+    border-radius:8px;margin:0 -0.5rem;padding:0.65rem 0.5rem;
   }
   .dampak-item:last-child{border-bottom:none}
+  .dampak-item:hover{background:var(--bg)}
   .dampak-icon{
     width:2rem;height:2rem;display:flex;align-items:center;justify-content:center;
-    background:var(--accent);color:#fff;border-radius:50%;flex-shrink:0;margin-top:0.15rem;
+    background:var(--accent);color:#fff;border-radius:50%;flex-shrink:0;
+    margin-top:0.1rem;transition:background 0.2s;
   }
+  .dampak-item.open .dampak-icon{background:var(--accent-dim)}
   .dampak-icon svg{width:0.9rem;height:0.9rem}
   .dampak-item-content{flex:1;min-width:0}
-  .dampak-item-content h3{font-family:var(--font-display);font-weight:700;font-size:0.9rem;letter-spacing:-0.01em;margin-bottom:0.1rem}
-  .dampak-item-content p{font-size:0.8rem;color:var(--text2);line-height:1.4}
+  .dampak-header{
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .dampak-item-content h3{font-family:var(--font-display);font-weight:700;font-size:0.9rem;letter-spacing:-0.01em}
+  .dampak-toggle{
+    font-size:1.1rem;font-weight:700;color:var(--accent-dim);
+    transition:transform 0.2s;line-height:1;padding:0.2rem;
+  }
+  .dampak-item.open .dampak-toggle{transform:rotate(45deg)}
+  .dampak-detail{
+    max-height:0;overflow:hidden;opacity:0;
+    transition:max-height 0.35s ease,opacity 0.35s ease,margin 0.35s ease;
+    margin-top:0;
+  }
+  .dampak-item.open .dampak-detail{
+    max-height:400px;opacity:1;
+    margin-top:0.4rem;
+  }
+  .dampak-detail p{font-size:0.8rem;color:var(--text2);line-height:1.5;margin-bottom:0.5rem}
+  .dampak-analogi{
+    font-size:0.8rem;color:var(--accent-dim);font-style:italic;
+    padding:0.5rem 0 0.5rem 0.85rem;
+    border-left:2px solid var(--accent-dim);
+    line-height:1.5;
+  }
 
   /* ---------- KESIMPULAN ---------- */
   .kesimpulan{padding:4rem 2rem;background:var(--bg)}
@@ -477,18 +496,17 @@
   .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
   .reveal.visible{opacity:1;transform:translateY(0)}
 
-  /* ---------- SUMBER ---------- */
-  .sumber{padding:4rem 2rem;background:var(--bg)}
-  .sumber-content{max-width:700px;margin:0 auto}
-  .sumber-intro{font-size:0.9rem;color:var(--text2);margin-bottom:2rem}
-  .sumber-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:0.75rem}
-  .sumber-list li{
-    font-size:0.85rem;color:var(--text2);line-height:1.5;
-    padding:1rem 1.25rem;background:var(--surface);border-radius:12px;
+  /* ---------- LIHAT SUMBER ---------- */
+  .lihat-sumber{padding:2.5rem 2rem;background:var(--surface);border-top:1px solid var(--surface2);text-align:center}
+  .lihat-sumber-content{max-width:600px;margin:0 auto}
+  .lihat-sumber p{font-size:0.85rem;color:var(--text2);margin-bottom:1rem;line-height:1.5}
+  .lihat-sumber-link{
+    display:inline-block;padding:0.5rem 1.5rem;
+    background:var(--accent);color:#fff;text-decoration:none;
+    border-radius:100px;font-weight:600;font-size:0.85rem;
+    transition:background 0.15s;
   }
-  .sumber-list a{color:var(--accent);font-weight:600;text-decoration:none}
-  .sumber-list a:hover{text-decoration:underline}
-  .sumber-note{font-size:0.75rem;color:var(--text2);opacity:0.6;margin-top:2rem;text-align:center}
+  .lihat-sumber-link:hover{background:var(--accent-dim)}
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -510,13 +528,12 @@
     .hero-sector-btn{width:3rem;height:3rem}
     .hero-sector-btn svg{width:1rem;height:1rem}
     header{padding:0.75rem 1rem}
-    .nav-links{gap:0.75rem}
     .fakta-sejarah-grid{gap:0.75rem}
     .fakta-sejarah-arrow{font-size:1rem}
   }
   @media(max-width:480px){
     .hero{padding:5rem 1rem 2rem}
-    .realita,.fakta-sejarah,.chart-section,.dampak,.kesimpulan,.sumber{padding:2rem 1rem}
+    .realita,.fakta-sejarah,.chart-section,.dampak,.kesimpulan,.lihat-sumber{padding:2rem 1rem}
     .hero-sector-btn{width:2.5rem;height:2.5rem}
     .hero-sector-btn svg{width:0.85rem;height:0.85rem}
     .rate-box{padding:0.85rem 1.25rem}
@@ -528,50 +545,58 @@
     {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>',
       title: 'Makanan & Minuman',
-      desc: 'Gandum, kedelai, susu bubuk, gula rafinasi — semua impor. Harga mie instant, roti, susu, kecap naik.',
-      analogi: 'Bahan baku dibeli pake dolar, lo beli dagangannya pake rupiah. Selaenya ditanggung lo.',
+      desc: 'Indonesia impor gandum jutaan ton per tahun buat mi instan & roti, kedelai buat tahu & tempe, susu bubuk, gula rafinasi, bahkan garam. Semua dibeli pake dolar. Dolar naik → ongkos produksi naik → harga makanan naik — lo bayar di kasir.',
+      analogi: 'Bayangin lo jualan mi ayam. Harga mie, minyak, kecap naik karena bahan bakunya dibeli pake dolar. Lo jual mi ayam, bukan dolar — tapi modal lo naik. Pilihan lo: naikin harga atau kurangi porsi. Dua-duanya ujungnya lo yang rugi.',
+      tags: '#ImporPangan #Inflation',
     },
     {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg>',
       title: 'BBM & Energi',
-      desc: 'Indonesia net importir minyak. Harga minyak dunia pake dolar. Bensin, elpiji, listrik — semua naik.',
-      analogi: 'Bayangin lo isi bensin motor. Bensinnya beli pake dolar. Lo bayar pake rupiah yang nilainya lagi anjlok.',
+      desc: 'Indonesia dulu eksportir minyak, sekarang net importir. Kita beli minyak mentah dari luar pake dolar. Harga BBM naik, elpiji naik, listrik naik, ongkos transportasi naik — semua barang kena biaya kirim lebih mahal.',
+      analogi: 'Lo ojek online. Bensin lo isi tiap hari, harganya naik karena dolar. Tapi tarif ojek lo gak naik-naik. Lo kerja makin keras, dapetnya makin tipis. Itu yang dirasain jutaan sopir angkot, kurir, tukang ojek tiap hari.',
+      tags: '#Energi #Transportasi',
     },
     {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>',
       title: 'Obat & Kesehatan',
-      desc: '90% bahan baku obat impor. Alat kesehatan juga impor. Rumah sakit & apotek bayar lebih mahal.',
-      analogi: 'Bahan baku obat dibeli pake dolar. Pas lo beli obat batuk di apotik, lo bayar kenaikan dolarnya.',
+      desc: '90% bahan baku obat masih impor — dari obat batuk sampe antibiotik. Alat kesehatan dari suntikan sampe MRI semua impor. Dolar naik → harga obat naik → BPJS terbebani → lo bayar iuran lebih mahal atau manfaat berkurang.',
+      analogi: 'Lo beli obat demam di apotek Rp 50.000. Sekitar Rp 10.000 dari itu ilang cuma gara-gara dolar naik. Sakit aja udah mendingan, lo harus bayar lebih mahal karena rupiah lemes.',
+      tags: '#Kesehatan #ObatImpor',
     },
     {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>',
       title: 'Teknologi & Gadget',
-      desc: 'HP, laptop, chip, software langganan — semua harga internasional pake dolar. Mending lo siapin dompet.',
-      analogi: 'HP yang lo pake sekarang komponennya dibeli pake dolar. Setiap naik dolar, HP berikutkan lebih mahal.',
+      desc: 'HP, laptop, tablet — 70% komponennya (chip, layar, RAM) impor. Layanan cloud & software langganan (Canva, Spotify, ChatGPT) pake dolar. Dolar naik → gadget baru makin mahal, atau spek diturunin harga tetap.',
+      analogi: 'HP yang lo pake sekarang, setiap komponen kecil dibeli pake dolar. Setiap rupiah melemah Rp 100, pabrik nambah biaya produksi miliaran rupiah. Ujung-ujungnya lo bayar lebih mahal buat HP yang sama.',
+      tags: '#Teknologi #Gadget',
     },
     {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>',
       title: 'Pertanian & Peternakan',
-      desc: 'Pupuk impor, pakan ternak impor, bibit impor. Biaya produksi naik, harga jual naik, lo yang beli.',
-      analogi: 'Peternak ayam beli pakan pake dolar. Harga ayam di warung naik. Lo makan ayam, lo yang ngerasain.',
+      desc: 'Pupuk impor, pakan ternak (jagung, kedelai) impor, bibit impor, alat pertanian impor. Biaya produksi petani & peternak naik. Harga daging ayam, telur, sayur naik — dari peternak sampe meja makan lo semua kena.',
+      analogi: 'Peternak ayam beli pakan pake dolar. Ayam makan pakan mahal. Harga ayam potong naik. Lo mau geprek? Harganya naik. Dari peternak, ke pengepul, ke rumah makan, ke lo — semua ngerasain dampak dolarnya.',
+      tags: '#Pangan #Peternakan',
     },
     {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>',
       title: 'Properti & Bahan Bangunan',
-      desc: 'Besi, baja, semen, keramik — bahan baku & alat berat impor. Harga rumah & renovasi makin mahal.',
-      analogi: 'Mau bangun rumah? Semen, besi, cat aja bahan dasarnya impor. Dolar naik, ongkos bangun naik.',
+      desc: 'Besi baja, keramik, cat, pipa PVC, kaca, alat berat — semua impor. Ongkos konstruksi naik. Harga rumah baru naik. Renovasi makin mahal. Kontrakan & kos ikut naik karena biaya material & perawatan membengkak.',
+      analogi: 'Mau renovasi kamar mandi? Keramik, cat, kran air, closet — sebagian besar impor. Anggaran renovasi lo membengkak tanpa lo sadari. Itu sebabnya rumah makin tahun gak pernah murah.',
+      tags: '#Properti #Konstruksi',
     },
     {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>',
       title: 'Utang Negara',
-      desc: 'Pemerintah punya utang pake dolar. Pas bayar butuh lebih banyak rupiah. Uang dari pajak — lo yang bayar.',
-      analogi: 'Lo minjem uang ke temen pake dollar. Pas mau bayar, nilai rupiah anjlok. Lo harus bayar lebih banyak.',
+      desc: 'Pemerintah punya utang luar negeri dalam dolar — dari jaman orba sampe sekarang. Pas jatuh tempo, butuh rupiah lebih banyak buat bayar. APBN terbebani. Uang yang harusnya buat subsidi & infrastruktur, habis buat bayar utang.',
+      analogi: 'Lo pinjem 1.000 USD ke temen pas kurs Rp 15.000 (utang Rp 15 juta). Pas mau bayar, kurs udah Rp 17.500. Lo harus bayar Rp 17,5 juta — meskipun pinjemnya cuma 1.000 USD. Negara juga gitu, cuma jumlahnya triliunan.',
+      tags: '#Utang #APBN #Fiskal',
     },
     {
       icon: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>',
       title: 'Pendidikan & Beasiswa',
-      desc: 'Biaya kuliah LN, buku impor, beasiswa — semua pake dolar. Anak muda Indonesia paling kena dampak.',
-      analogi: 'Beasiswa lo dihitung pake dolar. Tiap dolar naik, uang beasiswanya makin tipis buat biaya hidup.',
+      desc: 'Biaya kuliah LN pake dolar. Buku & jurnal akademik pake dolar. Beasiswa LPDP & riset dihitung pake dolar. Setiap dolar naik, daya beli mahasiswa & peneliti Indonesia luntur — masa depan generasi muda taruhannya.',
+      analogi: 'Lo dapet beasiswa 20.000 USD/tahun. Pas kurs Rp 15.000 nilainya Rp 300 juta. Pas dolar naik ke Rp 17.500, nilai nominal lo naik — tapi biaya hidup di sana juga naik. Lo tetap rugi di purchasing power.',
+      tags: '#Pendidikan #Beasiswa #GenerasiMuda',
     },
   ];
 
@@ -651,15 +676,30 @@
 
   function renderDampak() {
     const grid = document.getElementById('dampakGrid');
-    grid.innerHTML = DAMPAK_DATA.map(d => `
-      <div class="dampak-item">
+    grid.innerHTML = DAMPAK_DATA.map((d, i) => `
+      <div class="dampak-item" data-index="${i}">
         <span class="dampak-icon">${d.icon}</span>
         <div class="dampak-item-content">
-          <h3>${d.title}</h3>
-          <p>${d.desc}</p>
+          <div class="dampak-header">
+            <h3>${d.title}</h3>
+            <span class="dampak-toggle">+</span>
+          </div>
+          <div class="dampak-detail">
+            <p>${d.desc}</p>
+            <div class="dampak-analogi">${d.analogi}</div>
+          </div>
         </div>
       </div>
     `).join('');
+
+    grid.addEventListener('click', (e) => {
+      const item = e.target.closest('.dampak-item');
+      if (!item) return;
+      const wasOpen = item.classList.contains('open');
+      // close all
+      grid.querySelectorAll('.dampak-item.open').forEach(el => el.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
   }
 
   function renderChart(rates) {
