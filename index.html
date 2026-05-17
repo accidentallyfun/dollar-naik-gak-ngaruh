@@ -88,6 +88,31 @@
     </div>
   </section>
 
+  <!-- ============ FAKTA SEJARAH ============ -->
+  <section class="fakta-sejarah">
+    <div class="fakta-sejarah-content">
+      <span class="section-tag">#Fakta</span>
+      <h2>Sejak 1960, Rupiah Gak Pernah Kuat</h2>
+      <div class="fakta-sejarah-grid">
+        <div class="fakta-sejarah-item">
+          <span class="fakta-sejarah-year">1960</span>
+          <span class="fakta-sejarah-val">Rp 11,5</span>
+          <span class="fakta-sejarah-label">1 USD</span>
+        </div>
+        <div class="fakta-sejarah-arrow">→</div>
+        <div class="fakta-sejarah-item">
+          <span class="fakta-sejarah-year">2026</span>
+          <span class="fakta-sejarah-val">Rp 17.500+</span>
+          <span class="fakta-sejarah-label">1 USD</span>
+        </div>
+      </div>
+      <blockquote class="fakta-sejarah-quote">
+        Dalam 66 tahun, rupiah <strong>gak pernah sekalipun</strong> menguat secara fundamental. Setiap krisis (65, 98, 2008, 2020, 2024) justru bikin rupiah semakin terpuruk. Ini bukan soal pemerintah siapa — ini soal struktur ekonomi Indonesia yang dari dulu <strong>tergantung impor dan utang dolar.</strong>
+      </blockquote>
+      <p class="fakta-sejarah-src">Sumber: Bank Indonesia, World Bank, IMF — data historis kurs USD/IDR 1960–2026</p>
+    </div>
+  </section>
+
   <!-- ============ LIVE CHART ============ -->
   <section class="chart-section" id="chart">
     <div class="chart-content">
@@ -320,6 +345,31 @@
   }
   @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-5px)}}
 
+  /* ---------- FAKTA SEJARAH ---------- */
+  .fakta-sejarah{padding:4rem 2rem;background:var(--surface)}
+  .fakta-sejarah-content{max-width:700px;margin:0 auto}
+  .fakta-sejarah-grid{
+    display:flex;align-items:center;justify-content:center;gap:1.5rem;
+    margin-bottom:2rem;
+  }
+  .fakta-sejarah-item{text-align:center}
+  .fakta-sejarah-year{display:block;font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--text2);font-weight:600;margin-bottom:0.25rem}
+  .fakta-sejarah-val{
+    font-family:var(--font-display);font-size:clamp(1.5rem,4vw,2.5rem);font-weight:800;
+    letter-spacing:-0.03em;
+  }
+  .fakta-sejarah-item:first-child .fakta-sejarah-val{color:var(--text)}
+  .fakta-sejarah-item:last-child .fakta-sejarah-val{color:var(--accent)}
+  .fakta-sejarah-label{font-size:0.65rem;color:var(--text2)}
+  .fakta-sejarah-arrow{font-size:1.5rem;color:var(--accent-dim);margin-top:1.5rem}
+  .fakta-sejarah-quote{
+    font-size:clamp(0.85rem,1.2vw,1rem);color:var(--text2);line-height:1.6;
+    padding:1.25rem 1.5rem;background:var(--bg);border-radius:12px;
+    border-left:3px solid var(--accent);font-style:italic;margin-bottom:0.75rem;
+  }
+  .fakta-sejarah-quote strong{color:var(--text);font-style:normal}
+  .fakta-sejarah-src{font-size:0.7rem;color:var(--text2);opacity:0.6;text-align:center}
+
   /* ---------- REALITA ---------- */
   .realita{padding:4rem 2rem;background:var(--surface)}
   .realita-content,.chart-content,.dampak-content,.kesimpulan-content{
@@ -473,6 +523,7 @@
     .realita-grid{grid-template-columns:1fr;gap:1.5rem}
     .chart-stats{grid-template-columns:repeat(2,1fr)}
     .dampak-intro{font-size:0.9rem}
+    .fakta-sejarah-quote{font-size:0.85rem;padding:1rem}
   }
   @media(max-width:480px){
     header{padding:0.6rem 1rem;font-size:0.8rem}
@@ -499,6 +550,9 @@
     .rate-date{font-size:0.65rem}
     .hero-scroll{font-size:0.6rem}
     .realita,.chart-section,.dampak,.kesimpulan{padding:2.5rem 1rem}
+    .fakta-sejarah{padding:2.5rem 1rem}
+    .fakta-sejarah-grid{gap:0.75rem}
+    .fakta-sejarah-arrow{font-size:1rem;margin-top:1rem}
     .realita h2,.chart-section h2,.dampak h2,.kesimpulan h2{font-size:1.35rem;margin-bottom:1.25rem}
     .realita-text p{font-size:0.85rem}
     .realita-punch{font-size:0.9rem!important;padding:0.75rem}
