@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dolar Naik, Gak Ngaruh? — Realita Ekonomi buat Rakyat</title>
   <meta name="description" content="Kurs dolar naik terus. Apa bener gak ngaruh? Yuk liat dampaknya ke hidup lo sehari-hari — pake bahasa bayi, tanpa jargon.">
+  <meta property="og:title" content="Dolar Naik, Gak Ngaruh? — Realita Ekonomi buat Rakyat">
+  <meta property="og:description" content="Kurs dolar tembus Rp17.500+. Apa bener gak ngaruh? Yuk liat dampaknya ke hidup lo sehari-hari — pake bahasa bayi, tanpa jargon.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dolar-naik-gak-ngaruh.pages.dev">
+  <meta property="og:image" content="https://dolar-naik-gak-ngaruh.pages.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dolar Naik, Gak Ngaruh? — Realita Ekonomi buat Rakyat">
+  <meta name="twitter:description" content="Kurs dolar tembus Rp17.500+. Apa bener gak ngaruh? Yuk liat dampaknya ke hidup lo sehari-hari.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Sora:wght@300..700&display=swap" rel="stylesheet">
@@ -124,7 +132,7 @@
         <p>Jadi kalau ada yang bilang "dolar naik gak ngaruh" — lo udah tau jawabannya sekarang.</p>
       </div>
       <div class="kesimpulan-share">
-        <a href="https://twitter.com/intent/tweet?text=Dolar+naik%2C+gak+ngaruh%3F+Cek+fakta+di+sini+%F0%9F%91%80&url=" target="_blank" rel="noopener" class="share-btn">Bagikan di Twitter</a>
+        <a href="#" target="_blank" rel="noopener" class="share-btn" id="shareBtn">Bagikan di Twitter</a>
         <span class="share-note">Biar yang lain juga tau realitanya</span>
       </div>
     </div>
@@ -436,7 +444,7 @@
 
   /* ---- API ---- */
   async function fetchLatest() {
-    const res = await fetch('https://api.frankfurter.dev/latest?from=USD&to=IDR');
+    const res = await fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=IDR');
     const data = await res.json();
     return data.rates.IDR;
   }
@@ -447,7 +455,7 @@
     const start = new Date(now);
     start.setFullYear(start.getFullYear() - 1);
     const startStr = start.toISOString().split('T')[0];
-    const res = await fetch(`https://api.frankfurter.dev/${startStr}..${end}?from=USD&to=IDR`);
+    const res = await fetch(`https://api.frankfurter.dev/v1/${startStr}..${end}?from=USD&to=IDR`);
     const data = await res.json();
     return Object.entries(data.rates).map(([date, rates]) => ({ date, rate: rates.IDR }));
   }
@@ -588,8 +596,19 @@
     }
   }
 
+  /* ---- SHARE ---- */
+  function setupShare() {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent('Dolar naik, gak ngaruh? Cek fakta di sini \u{1F440}');
+    document.getElementById('shareBtn').href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+  }
+
+  /* ---- OG URL ---- */
+  document.querySelector('meta[property="og:url"]').content = window.location.href;
+
   /* ---- INIT ---- */
   renderDampak();
+  setupShare();
   refresh();
   setInterval(refresh, 120000);
 </script>
