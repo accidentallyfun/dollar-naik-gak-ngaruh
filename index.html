@@ -25,7 +25,7 @@
     <span class="logo"><span class="logo-dot"></span>USD/IDR</span>
     <div class="nav-links">
       <a href="#dampak" class="nav-link nav-cta">Dampak</a>
-      <a href="/sumber" class="nav-link nav-sumber">Sumber</a>
+      <a href="#sumber" class="nav-link nav-sumber">Sumber</a>
       <span class="live-rate" id="nav-rate">—</span>
     </div>
   </nav>
@@ -69,7 +69,7 @@
 
   <!-- ============ REALITA ============ -->
   <section class="realita" id="realita">
-    <div class="realita-content">
+    <div class="realita-content reveal">
       <span class="section-tag">#Realita</span>
       <h2>Masalahnya, ekonomi gak sesimpel itu.</h2>
       <div class="realita-grid">
@@ -90,32 +90,32 @@
 
   <!-- ============ FAKTA SEJARAH ============ -->
   <section class="fakta-sejarah">
-    <div class="fakta-sejarah-content">
+    <div class="fakta-sejarah-content reveal">
       <span class="section-tag">#Fakta</span>
-      <h2>Sejak 1960, Rupiah Gak Pernah Kuat</h2>
+      <h2>Sejak 1967, Rupiah Gak Pernah Kuat</h2>
       <div class="fakta-sejarah-grid">
         <div class="fakta-sejarah-item">
-          <span class="fakta-sejarah-year">1960</span>
-          <span class="fakta-sejarah-val">Rp 11,5</span>
+          <span class="fakta-sejarah-year">1967 (terendah)</span>
+          <span class="fakta-sejarah-val">Rp 137</span>
           <span class="fakta-sejarah-label">1 USD</span>
         </div>
         <div class="fakta-sejarah-arrow">→</div>
         <div class="fakta-sejarah-item">
-          <span class="fakta-sejarah-year">2026</span>
+          <span class="fakta-sejarah-year">2026 (tertinggi)</span>
           <span class="fakta-sejarah-val">Rp 17.500+</span>
-          <span class="fakta-sejarah-label">1 USD</span>
+          <span class="fakta-sejarah-label">1 USD — rekor sepanjang masa</span>
         </div>
       </div>
       <blockquote class="fakta-sejarah-quote">
-        Dalam 66 tahun, rupiah <strong>gak pernah sekalipun</strong> menguat secara fundamental. Setiap krisis (65, 98, 2008, 2020, 2024) justru bikin rupiah semakin terpuruk. Ini bukan soal pemerintah siapa — ini soal struktur ekonomi Indonesia yang dari dulu <strong>tergantung impor dan utang dolar.</strong>
+        Dalam hampir 60 tahun, rupiah <strong>gak pernah sekalipun</strong> menguat secara fundamental. Dari Rp 137/USD di 1967 jadi Rp 17.500+/USD di 2026 — anjlok <strong>12.700%</strong>. Setiap krisis (65, 98, 2008, 2020, 2024) justru bikin rupiah tambah terpuruk. Ini bukan soal pemerintah siapa — ini soal struktur ekonomi Indonesia yang dari dulu <strong>tergantung impor dan utang dolar.</strong>
       </blockquote>
-      <p class="fakta-sejarah-src">Sumber: Bank Indonesia, World Bank, IMF — data historis kurs USD/IDR 1960–2026</p>
+      <p class="fakta-sejarah-src">Sumber: CEIC Data (1967–2025), Bank Indonesia, Asia Times (Mei 2026), IMF — kurs USD/IDR bulanan, data historis sejak 1967</p>
     </div>
   </section>
 
   <!-- ============ LIVE CHART ============ -->
   <section class="chart-section" id="chart">
-    <div class="chart-content">
+    <div class="chart-content reveal">
       <span class="section-tag">#Data</span>
       <h2>Kurs Hari Ini</h2>
       <div class="chart-stats">
@@ -144,7 +144,7 @@
 
   <!-- ============ DAMPAK ============ -->
   <section class="dampak" id="dampak">
-    <div class="dampak-content">
+    <div class="dampak-content reveal">
       <span class="section-tag">#Dampak</span>
       <h2>Yang Kena Imbas</h2>
       <p class="dampak-intro">Dolar naik gak cuman ngaruh ke kantong pejabat. Ini dampak langsung ke dompet lo:</p>
@@ -156,7 +156,7 @@
 
   <!-- ============ KESIMPULAN ============ -->
   <section class="kesimpulan" id="kesimpulan">
-    <div class="kesimpulan-content">
+    <div class="kesimpulan-content reveal">
       <span class="section-tag">#Kesimpulan</span>
       <h2>Jadi, apa dolar naik ngaruh?</h2>
       <div class="kesimpulan-box">
@@ -172,11 +172,28 @@
     </div>
   </section>
 
+  <!-- ============ SUMBER ============ -->
+  <section class="sumber" id="sumber">
+    <div class="sumber-content reveal">
+      <span class="section-tag">#Sumber</span>
+      <h2>Data &amp; Referensi</h2>
+      <p class="sumber-intro">Semua data dan fakta di halaman ini berasal dari sumber berikut:</p>
+      <ul class="sumber-list">
+        <li><a href="https://www.ceicdata.com/en/indonesia/foreign-exchange-rate" target="_blank" rel="noopener">CEIC Data</a> — Indonesia Exchange Rate against USD (1967–2025). Data historis kurs bulanan sejak 1967, rekor terendah Rp 137/USD.</li>
+        <li><a href="https://asiatimes.com" target="_blank" rel="noopener">Asia Times</a> — "Rupiah plunges to record low" (15 Mei 2026). Kurs Rp 17.513/USD, level terlemah sepanjang sejarah Indonesia.</li>
+        <li><a href="https://www.bi.go.id" target="_blank" rel="noopener">Bank Indonesia</a> — Kurs referensi resmi USD/IDR (Jakarta Interbank Spot Dollar Rate).</li>
+        <li><a href="https://www.imf.org/en/Data" target="_blank" rel="noopener">International Monetary Fund</a> — International Financial Statistics: historical exchange rate data.</li>
+        <li><a href="https://www.frankfurter.app" target="_blank" rel="noopener">Frankfurter API</a> — European Central Bank reference rates. Sumber data kurs real-time di halaman ini.</li>
+        <li><a href="https://www.focus-economics.com/country-indicator/indonesia/exchange-rate" target="_blank" rel="noopener">FocusEconomics</a> — Rupiah exchange rate analysis, forecast, dan historical data.</li>
+      </ul>
+      <p class="sumber-note">Halaman ini dibuat untuk edukasi publik. Silakan verifikasi data dari sumber-sumber di atas secara mandiri.</p>
+    </div>
+  </section>
+
 </main>
 
 <footer>
   <div class="footer-content">
-    <p>Data kurs dari <a href="https://www.frankfurter.app" target="_blank" rel="noopener">Frankfurter API</a> (European Central Bank).</p>
     <p>Dibuat untuk edukasi publik. Silakan disebarkan.</p>
     <p class="footer-watermark">made by <a href="https://instagram.com/shafryyusuf" target="_blank" rel="noopener">@shafryyusuf</a></p>
   </div>
@@ -476,6 +493,23 @@
 
 
 
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ---------- SUMBER ---------- */
+  .sumber{padding:4rem 2rem;background:var(--bg)}
+  .sumber-content{max-width:700px;margin:0 auto}
+  .sumber-intro{font-size:0.9rem;color:var(--text2);margin-bottom:2rem}
+  .sumber-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:0.75rem}
+  .sumber-list li{
+    font-size:0.85rem;color:var(--text2);line-height:1.5;
+    padding:1rem 1.25rem;background:var(--surface);border-radius:12px;
+  }
+  .sumber-list a{color:var(--accent);font-weight:600;text-decoration:none}
+  .sumber-list a:hover{text-decoration:underline}
+  .sumber-note{font-size:0.75rem;color:var(--text2);opacity:0.6;margin-top:2rem;text-align:center}
+
   /* ---------- FOOTER ---------- */
   footer{
     padding:2rem;background:var(--surface);
@@ -489,98 +523,23 @@
   .footer-content p{margin-bottom:0.25rem}
   .footer-watermark{margin-top:0.75rem!important;padding-top:0.75rem;border-top:1px solid var(--surface2);font-size:0.75rem;color:var(--text2)}
 
-  </style>/* ---------- LOADING ---------- */
-  .loading{opacity:0.4;position:relative}
-  .loading::after{
-    content:'';position:absolute;inset:0;
-    background:linear-gradient(90deg,transparent,rgba(0,0,0,0.03),transparent);
-    animation:shimmer 1.5s infinite;
-  }
-  @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
-
-  /* ---------- RESPONSIVE ---------- */
-  @media(max-width:900px){
+  /* ---------- MOBILE ---------- */
+  @media(max-width:700px){
     .hero-inner{flex-direction:column;gap:2rem}
-    .hero-right{align-items:flex-start}
-    .hero-sectors-grid{width:320px;margin-right:-30px}
-    .hero-sector-btn{width:3.5rem;height:3.5rem}
-    .hero-sector-btn svg{width:1.1rem;height:1.1rem}
-    .hero-sector-btn:nth-child(1){margin:8px 0 0 0}
-    .hero-sector-btn:nth-child(2){margin:24px 0 0 20px}
-    .hero-sector-btn:nth-child(3){margin:-8px 0 0 36px}
-    .hero-sector-btn:nth-child(4){margin:30px 0 0 10px}
-    .hero-sector-btn:nth-child(5){margin:-4px 0 0 30px}
-    .hero-sector-btn:nth-child(6){margin:14px 0 0 24px}
-    .hero-sector-btn:nth-child(7){margin:2px 0 0 42px}
-    .hero-sector-btn:nth-child(8){margin:26px 0 0 16px}
-  }
-  @media(max-width:768px){
-    .hero{padding:5rem 1.5rem 2rem}
-    .hero-kicker{font-size:0.6rem}
-    .rate-box{padding:0.9rem 1.25rem}
-    .rate-value{font-size:clamp(1.75rem,6vw,2.5rem)}
-    .hero-rate{margin-top:2rem}
-    .realita-grid{grid-template-columns:1fr;gap:1.5rem}
-    .chart-stats{grid-template-columns:repeat(2,1fr)}
-    .dampak-intro{font-size:0.9rem}
-    .fakta-sejarah-quote{font-size:0.85rem;padding:1rem}
+    .hero-sectors-grid{width:100%;margin-right:0;justify-content:center}
+    .hero-sector-btn{width:3rem;height:3rem}
+    .hero-sector-btn svg{width:1rem;height:1rem}
+    header{padding:0.75rem 1rem}
+    .nav-links{gap:0.75rem}
+    .fakta-sejarah-grid{gap:0.75rem}
+    .fakta-sejarah-arrow{font-size:1rem}
   }
   @media(max-width:480px){
-    header{padding:0.6rem 1rem;font-size:0.8rem}
-    .hero{padding:4.5rem 1rem 2rem;min-height:94dvh}
-    .hero-kicker{font-size:0.55rem;letter-spacing:0.12em}
-    .hero-statement blockquote{font-size:0.8rem;padding:0.75rem 1rem}
-    .hero-statement cite{font-size:0.7rem}
-    .hero-sectors-grid{width:280px;margin-right:-20px}
-    .hero-sector-btn{width:3rem;height:3rem}
-    .hero-sector-btn svg{width:0.95rem;height:0.95rem}
-    .hero-sector-btn:nth-child(1){margin:6px 0 0 0}
-    .hero-sector-btn:nth-child(2){margin:18px 0 0 14px}
-    .hero-sector-btn:nth-child(3){margin:-6px 0 0 26px}
-    .hero-sector-btn:nth-child(4){margin:22px 0 0 8px}
-    .hero-sector-btn:nth-child(5){margin:-2px 0 0 22px}
-    .hero-sector-btn:nth-child(6){margin:10px 0 0 18px}
-    .hero-sector-btn:nth-child(7){margin:2px 0 0 32px}
-    .hero-sector-btn:nth-child(8){margin:20px 0 0 12px}
-    .nav-links{gap:0.75rem}
-    .nav-link{font-size:0.7rem}
-    .rate-box{padding:0.75rem 1rem;border-radius:12px}
-    .rate-value{font-size:clamp(1.5rem,7vw,2rem)}
-    .rate-change{font-size:0.75rem}
-    .rate-date{font-size:0.65rem}
-    .hero-scroll{font-size:0.6rem}
-    .realita,.chart-section,.dampak,.kesimpulan{padding:2.5rem 1rem}
-    .fakta-sejarah{padding:2.5rem 1rem}
-    .fakta-sejarah-grid{gap:0.75rem}
-    .fakta-sejarah-arrow{font-size:1rem;margin-top:1rem}
-    .realita h2,.chart-section h2,.dampak h2,.kesimpulan h2{font-size:1.35rem;margin-bottom:1.25rem}
-    .realita-text p{font-size:0.85rem}
-    .realita-punch{font-size:0.9rem!important;padding:0.75rem}
-    .realita-analogi{padding:1.15rem}
-    .analogi-title{font-size:0.8rem}
-    .realita-analogi p{font-size:0.8rem}
-    .chart-stats{gap:0.6rem}
-    .stat-block{padding:0.7rem;border-radius:10px}
-    .stat-label{font-size:0.6rem}
-    .stat-value{font-size:clamp(0.9rem,3.5vw,1.1rem)}
-    .chart-wrap{padding:0.5rem;border-radius:12px}
-    .dampak-intro{font-size:0.85rem;margin-bottom:1.5rem}
-    .dampak-item{padding:1rem 0;gap:0.85rem}
-    .dampak-icon{width:2.25rem;height:2.25rem}
-    .dampak-icon svg{width:1rem;height:1rem}
-    .dampak-item-content h3{font-size:0.9rem}
-    .dampak-item-content p{font-size:0.8rem}
-    .dampak-analogi{font-size:0.75rem;padding:0.35rem 0 0.35rem 0.7rem}
-    .kesimpulan-box{padding:1.25rem;border-radius:12px}
-    .kesimpulan-big{font-size:1.4rem}
-    .kesimpulan-box p{font-size:0.85rem}
-    .share-btn{font-size:0.8rem;padding:0.6rem 1.5rem}
-    footer{padding:1.5rem 1rem}
-    .footer-content{font-size:0.7rem}
-  }
-  @media(min-width:769px)and(max-width:1024px){
-    .hero{padding:6rem 2rem 3rem}
-    .dampak-grid{grid-template-columns:repeat(2,1fr)}
+    .hero{padding:5rem 1rem 2rem}
+    .realita,.fakta-sejarah,.chart-section,.dampak,.kesimpulan,.sumber{padding:3rem 1rem}
+    .hero-sector-btn{width:2.5rem;height:2.5rem}
+    .hero-sector-btn svg{width:0.85rem;height:0.85rem}
+    .rate-box{padding:0.85rem 1.25rem}
   }
 </style>
 
@@ -815,9 +774,20 @@
     const btn = document.getElementById('shareBtn');
     if (!btn) return;
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent('Dolar naik, gak ngaruh? Cek fakta di sini \u{1F440}');
+    const text = encodeURIComponent('Dolar naik, gak ngaruh? Cek fakta di sini 👀');
     btn.href = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
   }
+
+  /* ---- SCROLL REVEAL ---- */
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
   /* ---- OG URL ---- */
   const ogUrl = document.querySelector('meta[property="og:url"]');
