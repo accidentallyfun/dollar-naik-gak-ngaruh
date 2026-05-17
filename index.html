@@ -278,28 +278,26 @@
   }
 
   .hero-sectors-grid{
-    display:grid;
-    grid-template-columns:repeat(4,auto);
-    gap:0.75rem;
+    display:flex;flex-wrap:wrap;width:320px;
   }
   .hero-sector-btn{
-    width:4.5rem;height:4.5rem;display:flex;align-items:center;justify-content:center;
+    width:4.25rem;height:4.25rem;display:flex;align-items:center;justify-content:center;
     background:var(--accent);color:#fff;text-decoration:none;
-    border-radius:50%;
+    border-radius:50%;flex-shrink:0;
     transition:all 0.2s;
     position:relative;
     box-shadow:0 4px 12px oklch(0.52 0.22 30 / 0.25);
   }
-  .hero-sector-btn:nth-child(1){animation:float1 4s ease-in-out infinite}
-  .hero-sector-btn:nth-child(2){animation:float2 4.5s ease-in-out infinite 0.3s}
-  .hero-sector-btn:nth-child(3){animation:float3 3.8s ease-in-out infinite 0.7s}
-  .hero-sector-btn:nth-child(4){animation:float4 4.2s ease-in-out infinite 0.2s}
-  .hero-sector-btn:nth-child(5){animation:float5 5s ease-in-out infinite 0.6s}
-  .hero-sector-btn:nth-child(6){animation:float6 4.6s ease-in-out infinite 1s}
-  .hero-sector-btn:nth-child(7){animation:float7 3.5s ease-in-out infinite 0.4s}
-  .hero-sector-btn:nth-child(8){animation:float8 4.8s ease-in-out infinite 0.8s}
+  .hero-sector-btn:nth-child(1){animation:float1 4s ease-in-out infinite;margin:0 0 0 0}
+  .hero-sector-btn:nth-child(2){animation:float2 4.5s ease-in-out infinite 0.3s;margin:16px 0 0 12px}
+  .hero-sector-btn:nth-child(3){animation:float3 3.8s ease-in-out infinite 0.7s;margin:-8px 0 0 8px}
+  .hero-sector-btn:nth-child(4){animation:float4 4.2s ease-in-out infinite 0.2s;margin:24px 0 0 -4px}
+  .hero-sector-btn:nth-child(5){animation:float5 5s ease-in-out infinite 0.6s;margin:-12px 0 0 20px}
+  .hero-sector-btn:nth-child(6){animation:float6 4.6s ease-in-out infinite 1s;margin:8px 0 0 -8px}
+  .hero-sector-btn:nth-child(7){animation:float7 3.5s ease-in-out infinite 0.4s;margin:-4px 0 0 28px}
+  .hero-sector-btn:nth-child(8){animation:float8 4.8s ease-in-out infinite 0.8s;margin:12px 0 0 4px}
   .hero-sector-btn:hover{transform:scale(1.1) !important;box-shadow:0 6px 20px oklch(0.52 0.22 30 / 0.35)}
-  .hero-sector-btn svg{width:1.4rem;height:1.4rem;flex-shrink:0}
+  .hero-sector-btn svg{width:1.3rem;height:1.3rem;flex-shrink:0}
   @keyframes float1{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-7px) rotate(2deg)}}
   @keyframes float2{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-5px) rotate(-1deg)}66%{transform:translateY(3px) rotate(1deg)}}
   @keyframes float3{0%,100%{transform:translate(0,0)}25%{transform:translate(-3px,-6px)}75%{transform:translate(3px,2px)}}
@@ -525,9 +523,17 @@
   @media(max-width:900px){
     .hero-inner{flex-direction:column;gap:2rem}
     .hero-right{align-items:flex-start}
-    .hero-sectors-grid{gap:0.6rem}
-    .hero-sector-btn{width:3.75rem;height:3.75rem}
-    .hero-sector-btn svg{width:1.15rem;height:1.15rem}
+    .hero-sectors-grid{width:280px}
+    .hero-sector-btn{width:3.5rem;height:3.5rem}
+    .hero-sector-btn svg{width:1.1rem;height:1.1rem}
+    .hero-sector-btn:nth-child(1){margin:0}
+    .hero-sector-btn:nth-child(2){margin:12px 0 0 8px}
+    .hero-sector-btn:nth-child(3){margin:-6px 0 0 6px}
+    .hero-sector-btn:nth-child(4){margin:18px 0 0 -2px}
+    .hero-sector-btn:nth-child(5){margin:-8px 0 0 14px}
+    .hero-sector-btn:nth-child(6){margin:6px 0 0 -6px}
+    .hero-sector-btn:nth-child(7){margin:-2px 0 0 20px}
+    .hero-sector-btn:nth-child(8){margin:10px 0 0 2px}
   }
   @media(max-width:768px){
     .hero{padding:5rem 1.5rem 2rem}
@@ -545,9 +551,17 @@
     .hero-kicker{font-size:0.55rem;letter-spacing:0.12em}
     .hero-statement blockquote{font-size:0.8rem;padding:0.75rem 1rem}
     .hero-statement cite{font-size:0.7rem}
-    .hero-sectors-grid{gap:0.5rem}
-    .hero-sector-btn{width:3.25rem;height:3.25rem}
-    .hero-sector-btn svg{width:1rem;height:1rem}
+    .hero-sectors-grid{width:240px}
+    .hero-sector-btn{width:3rem;height:3rem}
+    .hero-sector-btn svg{width:0.95rem;height:0.95rem}
+    .hero-sector-btn:nth-child(1){margin:0}
+    .hero-sector-btn:nth-child(2){margin:10px 0 0 6px}
+    .hero-sector-btn:nth-child(3){margin:-4px 0 0 4px}
+    .hero-sector-btn:nth-child(4){margin:14px 0 0 -2px}
+    .hero-sector-btn:nth-child(5){margin:-6px 0 0 10px}
+    .hero-sector-btn:nth-child(6){margin:4px 0 0 -4px}
+    .hero-sector-btn:nth-child(7){margin:-2px 0 0 16px}
+    .hero-sector-btn:nth-child(8){margin:8px 0 0 2px}
     .nav-links{gap:0.75rem}
     .nav-link{font-size:0.7rem}
     .rate-box{padding:0.75rem 1rem;border-radius:12px}
