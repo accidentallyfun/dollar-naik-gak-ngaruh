@@ -382,14 +382,17 @@
     --font-display: 'Bricolage Grotesque', sans-serif;
     --font-body: 'Sora', sans-serif;
   }
-  html{scroll-behavior:smooth;background:var(--bg);overflow-x:hidden}
+  html{scroll-behavior:smooth;background:var(--bg);overflow-x:hidden;overflow-y:auto}
   body{
     font-family:var(--font-body);
     color:var(--text);
     background:var(--bg);
     line-height:1.65;
+    overflow-x:hidden;width:100%;position:relative;
+    overflow-wrap:break-word;word-break:break-word;
     -webkit-font-smoothing:antialiased;
   }
+  img,canvas,video,iframe{max-width:100%;height:auto}
   p{max-width:65ch}
   .section-tag{max-width:none}
 
